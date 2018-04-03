@@ -3,7 +3,7 @@ import Router from 'vue-router'
 // import Hello from '@/components/Hello'
 import Test from '@/components/Test' // component下vue模块的引入
 import Register from '@/components/Register'
-import Dlg from '@/components/Dlg'
+// import Dlg from '@/components/Dlg'
 import nav from '@/components/Nav'
 import CloudMusic from '@/components/CloudMusic'
 // import dlg from '@/components/dlg'
