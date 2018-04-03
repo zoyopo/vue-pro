@@ -2,14 +2,14 @@
 <div class="CloudMusic">
   <Nav></Nav>
   <PanelPart ></PanelPart>
-  <FindMusic></FindMusic>
+   <FindMusic></FindMusic>
 </div>
 </template>
 
 <script>
 import  Nav from '@/components/Nav'
 import PanelPart from '@/components/PanelPart'
-import FindMusic from '@/components/FindMusic'
+ import FindMusic from '@/components/FindMusic'
 
 export default {
    components:{

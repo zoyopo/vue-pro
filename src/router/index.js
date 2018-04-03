@@ -35,11 +35,11 @@ export default new Router({
       path: '/register',   // 路由
       name: 'Register',
       component: Register  // 模块
-    },
-    {
-      path: '/dlg',   // 路由
-      name: 'Dlg',
-      component: Dlg
     }
+    // {
+    //   path: '/dlg',   // 路由
+    //   name: 'Dlg',
+    //   component: Dlg
+    // }
   ]
 })

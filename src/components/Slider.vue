@@ -72,6 +72,7 @@
                     let pageIndex = this.scroll.getCurrentPage().pageX
                     if(this.loop){
                         pageIndex -= 1;
+                        
                     }
                     this.currentPageIndex = pageIndex;
                     if(vm.autoPlay) {
@@ -98,7 +99,7 @@
         }
     }
 </script>
-<style lang='less'>
+<style lang='scss' scoped>
     .slide{
         width: 100%;
         overflow: hidden;
