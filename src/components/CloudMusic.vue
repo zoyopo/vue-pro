@@ -1,12 +1,18 @@
 <template>
 <div class="CloudMusic">
   <Nav></Nav>
+  <!--flex布局-->
+  <div class="mainPart">
   <PanelPart ></PanelPart>
+  
    <FindMusic></FindMusic>
+
+  </div>
 </div>
 </template>
 
 <script>
+
 import  Nav from '@/components/Nav'
 import PanelPart from '@/components/PanelPart'
  import FindMusic from '@/components/FindMusic'
@@ -16,13 +22,19 @@ export default {
 
        Nav,
        PanelPart,
-       FindMusic
+       FindMusic,
+       //Box
    }
 
 
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.mainPart{
+    display: flex;
+    // width:200px;
+    
+}
 
 </style>

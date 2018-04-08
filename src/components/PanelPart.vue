@@ -172,6 +172,7 @@ export default {
   //width: 20%;
   border: 1px solid;
   max-width: 200px;
+ // display: inline-block;
 }
 .panel-title {
   text-align: left;

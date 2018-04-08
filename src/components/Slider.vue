@@ -101,10 +101,11 @@
 </script>
 <style lang='scss' scoped>
     .slide{
-        width: 100%;
+        width: 90%;//width fix
         overflow: hidden;
         height: 150px;
         position: relative;
+        margin: 0 5%;
     }
     .slide-group{
         height: 150px;
