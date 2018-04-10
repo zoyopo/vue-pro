@@ -34,7 +34,7 @@ export default {
 .mainPart{
     display: flex;
     // width:200px;
-    
+     align-items:flex-start;//垂直方向按起始点对齐
 }
 
 </style>

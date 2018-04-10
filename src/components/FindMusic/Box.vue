@@ -85,7 +85,7 @@ export default {
   line-height: 24px;
   //max-height: 200px;
   text-align: left;
-  padding: 0 1.5%;
+ padding-left: 3.5%;
   height: 120px;
   position: relative;
 }

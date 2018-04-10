@@ -117,6 +117,76 @@ export default {
                 rowBadge: false
               }
             ]
+          },
+          {
+            title: "我的音乐",
+            rows: [
+              {
+                rowName: "本地音乐",
+                rowIcon: "fa fa-music",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "下载管理",
+                rowIcon: "fa fa-podcast",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "我的音乐云盘",
+                rowIcon: "fa fa-television",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "我的电台",
+                rowIcon: "fa fa-users",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "我的收藏",
+                rowIcon: "fa fa-users",
+                rowHref: "",
+                rowBadge: false
+              }
+            ]
+          },
+          {
+            title: "我的音乐",
+            rows: [
+              {
+                rowName: "本地音乐",
+                rowIcon: "fa fa-music",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "下载管理",
+                rowIcon: "fa fa-podcast",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "我的音乐云盘",
+                rowIcon: "fa fa-television",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "我的电台",
+                rowIcon: "fa fa-users",
+                rowHref: "",
+                rowBadge: false
+              },
+              {
+                rowName: "我的收藏",
+                rowIcon: "fa fa-users",
+                rowHref: "",
+                rowBadge: false
+              }
+            ]
           }
         ];
       }
