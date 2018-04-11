@@ -11,47 +11,56 @@
 
 <script>
 export default {
-    props:{
-
-        navList:{
-            type:Object,
-            default:function(){
-
-                return[{
-                    navTitle:'推荐',
-                    navHref:''
-                },{
-                    navTitle:'排行榜',
-                    navHref:''
-                },{
-                    navTitle:'歌单',
-                    navHref:''
-                },{
-                    navTitle:'主播电台',
-                    navHref:''
-                },
-                {
-                     navTitle:'最新音乐',
-                    navHref:""
-                }]
-            }
-        }
-
+  props: {
+    navList: {
+      type: Object,
+      default: function() {
+        return [
+          {
+            navTitle: "推荐",
+            navHref: ""
+          },
+          {
+            navTitle: "排行榜",
+            navHref: ""
+          },
+          {
+            navTitle: "歌单",
+            navHref: ""
+          },
+          {
+            navTitle: "主播电台",
+            navHref: ""
+          },
+          {
+            navTitle: "最新音乐",
+            navHref: ""
+          }
+        ];
+      }
     }
-
-
-}
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-.nav{
-    width: 100%;
-    ul{
-        li{display: inline-block;margin-left: 10%}
-        li:first-child{margin-left: 0;}
+.nav {
+  width: 100%;
+  ul {
+    border-bottom: solid 1px;
+    li {
+      display: inline-block;
+      margin-left: 10%;
+      a {
+        text-decoration: none;
+      }&:hover{
+          background: #64666523;
+      }
+      
     }
-
+    li:first-child {
+      margin-left: 0;
+    }
+  }
 }
-
-
 </style>

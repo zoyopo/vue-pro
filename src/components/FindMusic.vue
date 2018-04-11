@@ -26,8 +26,8 @@ export default {
     return {
       loop: true,
       autoPlay: true,
-      boxStyle:{
-        box:{height:'100px'}
+      boxStyle: {
+        box: { height: "100px" }
       },
       contentArray: [
         {
@@ -50,44 +50,49 @@ export default {
           picUrl: "Img/PanelPart/test2.jpg",
           id: 2,
           author: "zhangyp"
-        },{
+        },
+        {
           words: "It's long time no see my cousins.",
           title: "Don't be afraid,we are in a team",
           picUrl: "Img/PanelPart/test2.jpg",
           id: 2,
           author: "zhangyp"
-        },{
+        },
+        {
           words: "It's long time no see my cousins.",
           title: "Don't be afraid,we are in a team",
           picUrl: "Img/PanelPart/test2.jpg",
           id: 2,
           author: "zhangyp"
-        },{
+        },
+        {
           words: "It's long time no see my cousins111111122222222.",
           title: "Don't be afraid,we are in a team",
           picUrl: "Img/PanelPart/test2.jpg",
           id: 2,
           author: "zhangyp"
-        },{
+        },
+        {
           words: "It's long time no see my cousins111111111111111111.",
           title: "Don't be afraid,we are in a team",
           picUrl: "Img/PanelPart/test2.jpg",
           id: 2,
           author: "zhangyp"
-        },{
+        },
+        {
           words: "It's long time no see my cousins1111.",
           title: "Don't be afraid,we are in a team",
           picUrl: "Img/PanelPart/test2.jpg",
           id: 2,
           author: "zhangyp"
-        },{
+        },
+        {
           words: "It's long time no see my cousins111111111.",
           title: "Don't be afraid,we are in a team",
           picUrl: "Img/PanelPart/test2.jpg",
           id: 2,
           author: "zhangyp"
         }
-        
 
         // {
         //   words: "This is words part of the content 2",
@@ -122,6 +127,10 @@ export default {
 <style lang="scss" scoped>
 .findmusic {
   //display: inline-block;
-  width: calc(100% - 207px);
+  width: calc(100% - 201px);
+  border-right: 1px solid;
+  height: 550px;
+  overflow: scroll;
+  border-bottom: 1px solid;
 }
 </style>

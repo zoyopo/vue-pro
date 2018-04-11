@@ -43,8 +43,8 @@ export default {
           boardPic: "../static/Img/PanelPart/test2.jpg",
           boardTitle: "不露声色11111111",
           boardSinger: "张信哲",
-          likeIcon:'fa fa-heart-o',
-          shareIcon:'fa fa-share-square-o'
+          likeIcon: "fa fa-heart-o",
+          shareIcon: "fa fa-share-square-o"
         };
       }
     },
@@ -203,7 +203,7 @@ export default {
   },
   methods: {
     //音乐信息过长
-    cutMusicInfo: function(){
+    cutMusicInfo: function() {
       let boardTitle = this.boardInfo.boardTitle;
       let boardSinger = this.boardInfo.boardSinger;
       if (boardTitle.length > 3) {
@@ -216,7 +216,7 @@ export default {
       this.boardInfo.boardSinger = boardSinger;
     },
     //应该写一个watch方法进行监测
-    cutMethods: (ele, index)=> {
+    cutMethods: (ele, index) => {
       //验证类型
       if (typeof ele === "string" && typeof index === "number") {
         return ele.substring(0, index) + "..";
@@ -242,7 +242,10 @@ export default {
   //width: 20%;
   border: 1px solid;
   max-width: 200px;
- // display: inline-block;
+  // display: inline-block;
+  height: 550px;
+  overflow: scroll;
+  border-top: none;
 }
 .panel-title {
   text-align: left;
