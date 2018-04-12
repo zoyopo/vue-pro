@@ -130,7 +130,7 @@ export default {
   width: calc(100% - 201px);
   border-right: 1px solid;
   height: 550px;
-  overflow: scroll;
+  overflow-y: scroll;
   border-bottom: 1px solid;
 }
 </style>

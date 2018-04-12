@@ -244,7 +244,7 @@ export default {
   max-width: 200px;
   // display: inline-block;
   height: 550px;
-  overflow: scroll;
+  overflow-y: scroll;
   border-top: none;
 }
 .panel-title {
