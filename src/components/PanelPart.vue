@@ -237,14 +237,18 @@ export default {
     margin-left: 10%;
   }
 }
+.panel-body{
 
+  overflow-y: scroll;
+  height: 488px;
+}
 .panelpart {
   //width: 20%;
   border: 1px solid;
   max-width: 200px;
   // display: inline-block;
-  height: 550px;
-  overflow-y: scroll;
+ // height: 550px;
+ // overflow-y: scroll;
   border-top: none;
 }
 .panel-title {
@@ -254,7 +258,7 @@ export default {
 
 .music-board {
   position: relative; //分享收藏居左
-  margin-top: 10%;
+  //margin-top: 10%;
   border-top: solid 1px;
   padding: 5% 0;
   .music-pic {
