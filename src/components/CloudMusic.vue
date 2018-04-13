@@ -14,7 +14,7 @@
     artist: 'Silent Siren',
     src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
     pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
-  }" class="player"
+  } " class="player"
 />
 </div>
 </template>
