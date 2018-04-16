@@ -1,5 +1,6 @@
 <template>
 <div class="CloudMusic">
+  <!--bug之登录弹出界面时音乐会停掉-->
   <Nav v-on:showLoginDlg="showLoginDlg"></Nav>
   <!--flex布局-->
   <div class="mainPart">
@@ -44,14 +45,16 @@ export default {
   data() {
     return {
       dlgshow: false,
+      //很奇怪我的default没有生效
       dlgsize: {
-                    width:'200px',
+                    width:'250px',
                     height:'400px',
                     position:'absolute',
-                    left:'calc(50% - 100px)',
+                    left:'calc(50% - 125px)',
                     top:'calc(50% - 200px)',
                     'z-index':'9999',
-                    background:'#7a7460'
+                    background:'#7a7460',
+                    opacity: 0.95
                 },
       picshow: true
     };
