@@ -20,29 +20,42 @@
       <div class="nav-right">
         <!-- <div class="user-info"> -->
         <div class="user_info">
-          <img class="user-pic" src="../assets/logo.png" alt="图片暂无"/>
+          <!-- <img class="user-pic" src="../assets/logo.png" alt="图片暂无"/> -->
+          <i @click="loginClick" class="fa fa-user-circle-o"></i>
+          <div class="user-name"><i @click="loginClick" class="fa fa-sort-desc"></i></div>
         </div>
        
-          <div class="user-name">zyp&nbsp;<i class="fa fa-sort-desc"></i></div>  
+          <!-- <div class="user-name">&nbsp;<i class="fa fa-sort-desc"></i></div>   -->
         <!-- </div> -->
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="user-skin"><i class="fa fa-user-o"></i></div>
            <div class="user-mail"><i class="fa fa-envelope-o"></i></div>
            <div class="user-setting"><i class="fa fa-cog fa-fw"></i></div>
       </div>
+     
     </div>
+   
 </template>
 
 <script>
 
+
 export default {
+  components:{
+    
+  },
   data() {
     return {
       num: 1
+      
     };
   },
   methods: {
     increment() {
       return (this.num += 1);
+    },
+    loginClick(){
+       this.$emit("showLoginDlg");
+      //alert(1)
     }
   }
 };
@@ -75,6 +88,12 @@ $flex-display: flex;
 }
 .cloudmsc-title {
   flex: 2;
+}
+/*
+为了能和登录图标并排显示
+*/
+.user-name{
+  display: inline-block;
 }
 
 .logo-common{
