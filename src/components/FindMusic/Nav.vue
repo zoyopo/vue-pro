@@ -13,7 +13,7 @@
 export default {
   props: {
     navList: {
-      type: Object,
+      type: Array,
       default: function() {
         return [
           {

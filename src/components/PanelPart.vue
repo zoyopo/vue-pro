@@ -2,7 +2,7 @@
   <div class="panelpart">
       
       <!--利用两个循环进行左边各项的加载-->
-    <div class="panel-body">
+    <div class="panel-body" ref="wrapper">
         <ul v-for="rows in panelRowList" class="ul-left">
           <div class="panel-title">
           {{rows.title}}
@@ -30,10 +30,19 @@
 </template>
 
 <script>
+import BScroll from 'better-scroll'
+//let scroll = new BScroll('.panel-body')
 export default {
-  data() {},
+  data() {
+    return{}
+  },
   methods: {},
-
+  mounted() {
+      this.$nextTick(() => {
+        this.scroll = new BScroll(this.$refs.wrapper, {})
+      });
+      this.cutMusicInfo();
+    },
   props: {
     //左侧下方board信息
     boardInfo: {
@@ -198,9 +207,9 @@ export default {
     //   }
     // }
   },
-  mounted: function() {
-    this.cutMusicInfo();
-  },
+  // mounted: function() {
+    
+  // },
   methods: {
     //音乐信息过长
     cutMusicInfo: function() {
@@ -214,8 +223,9 @@ export default {
       }
       this.boardInfo.boardTitle = boardTitle;
       this.boardInfo.boardSinger = boardSinger;
+    
     },
-    //应该写一个watch方法进行监测
+    //应该写一个watch方法进行监测//filter
     cutMethods: (ele, index) => {
       //验证类型
       if (typeof ele === "string" && typeof index === "number") {

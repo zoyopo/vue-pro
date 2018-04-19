@@ -1,5 +1,5 @@
 <template>
-    <div class="findmusic">
+    <div class="findmusic" ref="wrapper">
         <Nav></Nav>
         <slide :loop ='loop' :autoPlay='autoPlay'>
             <div class="slider-item"><img src="../assets/logo.png"/></div>
@@ -14,6 +14,7 @@
 import Nav from "@/components/FindMusic/Nav.vue";
 import Slide from "@/components/Slider.vue";
 import Box from "@/components/FindMusic/Box";
+import BScroll from "better-scroll";
 export default {
   name: "findmusic",
   components: {
@@ -21,7 +22,11 @@ export default {
     Nav,
     Box
   },
-
+  mounted() {
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper, {});
+    });
+  },
   data() {
     return {
       loop: true,

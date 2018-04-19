@@ -6,7 +6,8 @@
     <div class="box-content">
       <div class="box-content-pic">
         <span>115万&nbsp;<i class="fa fa-headphones"></i></span>
-        <img class="pic" :src="'../static/'+item.picUrl" :id="item.id" alt="暂无图片" @click="showPicInfo">
+        <img-loading class="pic" :src="'../static/'+item.picUrl"></img-loading>
+        <!-- <img class="pic" :src="'../static/'+item.picUrl" :id="item.id" alt="暂无图片" @click="showPicInfo"> -->
       </div>
       <div class="box-content-words">
         {{item.words}}
@@ -19,9 +20,14 @@
     </div>
   </div>
 </template>
+
 <script>
+import imgLoading from '@/components/ImgLoading'
 export default {
   name: "box",
+  components:{
+    imgLoading
+  },
   props: {
     contentArray: {
       type: Array,
