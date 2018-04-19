@@ -13,8 +13,8 @@
   :music="{
     title: 'secret base~君がくれたもの~',
     artist: 'Silent Siren',
-    src: 'http://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-    pic: 'http://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
+    src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
+    pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
   } " class="player"
  />
   <dlg :dlgShow="dlgshow" :dlgSize="dlgsize" :picShow="picshow"></dlg>
