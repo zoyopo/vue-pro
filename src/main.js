@@ -9,7 +9,10 @@ import 'mint-ui/lib/style.css'
 // eleme
 import Element1 from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import axios from 'axios'
 //
+axios.defaults.baseURL = 'http:localhost:3000';
+Vue.prototype.$axios=axios;
 Vue.config.productionTip = false
 Vue.use(VuerResource)
 Vue.use(Mint)
