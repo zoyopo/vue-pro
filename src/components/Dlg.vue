@@ -94,14 +94,32 @@ export default {
       this.validateKey = "4546";
     },
     phoneLoginClick: function() {
+      var that = this;
       this.$axios
-        .post("http://localhost:3000/login/cellphone", {
-          'phone': this.phone,
-          'password': this.password,
-         'xhrFields': '{ withCredentials: true }'
+        .get("http://localhost:3000/login/cellphone", {
+          params: {
+            phone: this.phone,
+            password: this.password,
+            xhrFields: "{ withCredentials: true }"
+          }
         })
-        .then(res => {
+        .then(function(res) {
           console.log(res);
+        
+             that.$axios.get(
+               "http://localhost:3000/user/playlist",
+
+              {
+                params: {
+                  xhrFields: "{ withCredentials: true }",
+                  uid:res.data.account.id
+                }
+              }
+             ).then(function(playlistInfo){
+
+               console.log(playlistInfo)
+             })
+         
         });
     }
   }
