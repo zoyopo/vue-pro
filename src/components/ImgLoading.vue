@@ -8,8 +8,9 @@
         props: ['src'], // 父组件传过来所需的url
         data() {
             return {
-                url: "../static/Img/FindMusic/loading.gif",// 先加载loading.gif
-                isShowImg:false
+                 url: "../static/Img/FindMusic/loading.gif",
+                // 已经不用此方法来loading，改用fontawsome
+                isShowImg:false//通过控制隐藏显示来loading
             }
         },
         mounted() {
