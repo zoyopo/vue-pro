@@ -9,8 +9,8 @@
         <button class="btn btn-register">注册</button>
     </div>
     <div class="phone-login" v-show="phoneLoginIsShow">
-        <i class="fa fa-mobile-phone"></i><input v-focus class="input" type="text" v-model="phone" placeholder="请输入手机号" />
-        <i class="fa fa-key fa-fw"></i><input v-validate="validateKey" @blur="pwdVali" v-model="password"  class="input" type="password" placeholder="请输入密码"/>
+        <i class="fa fa-mobile-phone"></i><input v-focus class="input" type="text" v-model="loginInfo.phone" placeholder="请输入手机号" />
+        <i class="fa fa-key fa-fw"></i><input v-validate="validateKey" @blur="pwdVali" v-model="loginInfo.password"  class="input" type="password" placeholder="请输入密码"/>
        <div class="auto-login-area"> 
          <input type="checkbox" class="auto-login-check"/><span class="is-auto-login">自动登录</span>
          </div>
@@ -80,8 +80,15 @@ export default {
       phoneLoginIsShow: false,
       loginWayChooseIsShow: true,
       otherLoginAreaIsShow: true,
-      phone: "",
-      password: ""
+      loginInfo: {
+        phone: this.phone,
+        password: this.password,
+        xhrFields: "{ withCredentials: true }"
+      },
+      apiList: {
+        loginApi:"http://localhost:3000/login/cellphone",//登录api
+        playListApi:"http://localhost:3000/user/playlist"//歌单api
+      }
     };
   },
   methods: {
@@ -96,30 +103,26 @@ export default {
     phoneLoginClick: function() {
       var that = this;
       this.$axios
-        .get("http://localhost:3000/login/cellphone", {
-          params: {
-            phone: this.phone,
-            password: this.password,
-            xhrFields: "{ withCredentials: true }"
-          }
+        .get(that.apiList.loginApi, {
+          params: this.loginInfo
         })
         .then(function(res) {
           console.log(res);
-        
-             that.$axios.get(
-               "http://localhost:3000/user/playlist",
+
+          that.$axios
+            .get(
+              that.apiList.playListApi,
 
               {
                 params: {
                   xhrFields: "{ withCredentials: true }",
-                  uid:res.data.account.id
+                  uid: res.data.account.id
                 }
               }
-             ).then(function(playlistInfo){
-
-               console.log(playlistInfo)
-             })
-         
+            )
+            .then(function(playlistInfo) {
+              console.log(playlistInfo);
+            });
         });
     }
   }
