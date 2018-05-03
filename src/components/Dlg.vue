@@ -86,8 +86,27 @@ export default {
         xhrFields: "{ withCredentials: true }"
       },
       apiList: {
-        loginApi:"http://localhost:3000/login/cellphone",//登录api
-        playListApi:"http://localhost:3000/user/playlist"//歌单api
+        loginApi: "http://localhost:3000/login/cellphone", //登录api
+        playListApi: "http://localhost:3000/user/playlist" //歌单api
+      },
+      requestObject: {
+        loginRequest() {
+          return this.$axios.get(this.apiList.loginApi, {
+            params: this.loginInfo
+          });
+        },
+        playListRequest(res) {
+          return that.$axios.get(
+            that.apiList.playListApi,
+
+            {
+              params: {
+                xhrFields: "{ withCredentials: true }",
+                uid: res.data.account.id
+              }
+            }
+          );
+        }
       }
     };
   },
@@ -102,27 +121,53 @@ export default {
     },
     phoneLoginClick: function() {
       var that = this;
+      // this.$axios
+      //   .get(that.apiList.loginApi, {
+      //     params: this.loginInfo
+      //   })
+      //   .then(res => {
+      //     //console.log(res);
+      //     window.sessionStorage.setItem["uid"] = res.data.account.id; //用sessionstorage存储登录的用户uid
+      //     that.$axios
+      //       .get(
+      //         that.apiList.playListApi,
+
+      //         {
+      //           params: {
+      //             xhrFields: "{ withCredentials: true }",
+      //             uid: res.data.account.id
+      //           }
+      //         }
+      //       )
+      //       .then(function(playlistInfo) {
+      //         // console.log(playlistInfo);
+      //         if (res) that.dlgShow = false;
+      //       });
+      //   })
+      //   .catch(error => {
+      //     console.log(error);
+      //   });
+      this.requestObject.loginRequest().then(res =>{
+          if(res.data.code=="200"){
+            //将用户某些信息显示，例如头像
+          that.requestObject.playListRequest(res).then(()=>{
+
+            that.dlgShow = false;
+          })
+          }
+      }
+      ).catch(error=>{
+        console.log(error);
+      })
+    },
+    getLoginInfo() {
       this.$axios
         .get(that.apiList.loginApi, {
           params: this.loginInfo
         })
-        .then(function(res) {
+        .then(res => {
           //console.log(res);
-          window.sessionStorage.setItem["uid"]=res.data.account.id;//用sessionstorage存储登录的用户uid
-          that.$axios
-            .get(
-              that.apiList.playListApi,
-
-              {
-                params: {
-                  xhrFields: "{ withCredentials: true }",
-                  uid: res.data.account.id
-                }
-              }
-            )
-            .then(function(playlistInfo) {
-              console.log(playlistInfo);
-            });
+          window.sessionStorage.setItem["uid"] = res.data.account.id;
         });
     }
   }

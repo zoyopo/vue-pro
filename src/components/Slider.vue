@@ -198,14 +198,14 @@ export default {
     }
   },
   watch: {
-    //添加图片数据的监视 //这他妈也太坑了
-    picArray() {
-      //debugger;      
-      this.$nextTick(() => {
-        //dom渲染完毕的回调之中，进行更新操作
-        this.update();
-      });
-    },
+    // //添加图片数据的监视 //这他妈也太坑了
+    // picArray() {
+    //   //debugger;      
+    //   this.$nextTick(() => {
+    //     //dom渲染完毕的回调之中，进行更新操作
+    //     this.update();
+    //   });
+    // },
     loop() {
       this.update();
     },

@@ -1,9 +1,11 @@
 <template>
     <div class="findmusic" ref="wrapper">
         <Nav></Nav>
+        <div v-if="picArray.length>0">
         <slide :loop ='loop' :autoPlay='autoPlay' :picArray="picArray">           
           
         </slide>
+        </div>
     <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle"></box>
     </div>
 </template>
