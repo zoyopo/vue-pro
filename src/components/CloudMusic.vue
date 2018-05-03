@@ -63,6 +63,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.CloudMusic{
+  max-width: 768px;
+  margin: 0 auto;
+}
 .mainPart {
   display: flex;
   // width:200px;

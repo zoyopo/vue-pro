@@ -1,11 +1,10 @@
 <template>
     <div class="findmusic" ref="wrapper">
         <Nav></Nav>
-        <slide :loop ='loop' :autoPlay='autoPlay'>
-            <div class="slider-item"><img src="../assets/logo.png"/></div>
-            <div class="slider-item"><img src="../assets/test1.jpg"/></div>
-            <div class="slider-item"><img src="../assets/test2.jpg"/></div>
-            <div class="slider-item"><img src="../assets/logo.png"/></div>
+        <slide :loop ='loop' :autoPlay='autoPlay' :picArray="picArray">
+         
+            <div v-for="(item,index) in picArray" class="slider-item"><img :src="item.pic"/></div>
+          
         </slide>
     <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle"></box>
     </div>
@@ -25,8 +24,27 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.scroll = new BScroll(this.$refs.wrapper, {});
+    
     });
+      
   },
+  created() {
+    this.getBannerData();
+  },
+  methods: {
+    getBannerData: function() {
+      let that = this;
+      this.$axios
+        .get(that.$root.baseXhrUrl + "/banner", {
+          params: that.$root.xhrFields
+        })
+        .then(res => {
+          that.picArray = res.data.banners;
+        });
+        //this.$forceUpdate();
+    }
+  },
+
   data() {
     return {
       loop: true,
@@ -34,6 +52,7 @@ export default {
       boxStyle: {
         box: { height: "100px" }
       },
+      picArray: [],
       contentArray: [
         {
           words: "It's long ",

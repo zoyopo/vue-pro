@@ -1,8 +1,7 @@
 <template>
   <div class="slide" ref="slide">
     <div class="slide-group" ref="slideGroup">
-      <slot>
-      </slot>
+         <div v-for="(item,index) in picArray" class="slider-item"><img :src="item.pic"/></div>
     </div>
     <div v-if="showDot" class="dots">
       <span class="dot" @click="ToPic(index)" :class="{dotActive: (currentPageIndex) === index }" v-for="(item, index) in dots"></span>
@@ -11,12 +10,16 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { addClass } from '@/common/js/dom'
+import { addClass } from "@/common/js/dom";
 import BScroll from "better-scroll";
 const COMPONENT_NAME = "slide";
 export default {
   name: COMPONENT_NAME,
   props: {
+    picArray: {
+      type: Array,
+      default: []
+    },
     loop: {
       type: Boolean,
       default: true
@@ -53,6 +56,7 @@ export default {
     };
   },
   mounted() {
+   
     this.update();
     window.addEventListener("resize", () => {
       if (!this.slide || !this.slide.enabled) {
@@ -91,12 +95,17 @@ export default {
     this.slide.disable();
     clearTimeout(this.timer);
   },
-  methods: {
 
-    ToPic(pageIndex){
+  // updated() {
+
+  //      this.init();
+
+  // },
+  methods: {
+    ToPic(pageIndex) {
       //debugger
-      var vm=this;
-        vm.slide.goToPage(pageIndex, 0 , 400);
+      var vm = this;
+      vm.slide.goToPage(pageIndex, 0, 400);
     },
     update() {
       if (this.slide) {
@@ -121,6 +130,7 @@ export default {
       this.currentPageIndex = 0;
       this._setSlideWidth();
       if (this.showDot) {
+        //debugger
         this._initDots();
       }
       this._initSlide();
@@ -188,6 +198,14 @@ export default {
     }
   },
   watch: {
+    //添加图片数据的监视 //这他妈也太坑了
+    picArray() {
+      //debugger;      
+      this.$nextTick(() => {
+        //dom渲染完毕的回调之中，进行更新操作
+        this.update();
+      });
+    },
     loop() {
       this.update();
     },
@@ -205,9 +223,9 @@ export default {
 </script>
 <style lang='scss' scoped>
 .slide {
-  width: 90%;//width fix
-   overflow: hidden;
-   margin: 0 auto;
+  width: 90%; //width fix
+  overflow: hidden;
+  margin: 0 auto;
   //min-height: 1px;
   // position: relative;
   // margin: 0 5%;
@@ -215,31 +233,30 @@ export default {
   position: relative;
 }
 .slide-group {
-  
   overflow: hidden;
   white-space: nowrap;
   // height: 150px;
   // background: red;
   .slider-item {
     // box-sizing: border-box;
-    
+
     // overflow: hidden;
-    
+
     // text-align: center;
     // float: left;
-       width:100vw;
-            height: 150px;
-            background: yellowgreen;
-            float: left;
+    width: 154vw;
+    height: 150px;
+    // background: yellowgreen;
+    float: left;
     a {
       display: block;
       width: 100%;
       overflow: hidden;
       text-decoration: none;
     }
-    img{
+    img {
       display: block;
-      width: 28%;
+      width: 84%;
       margin: 0 auto;
     }
   }

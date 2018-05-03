@@ -11,8 +11,8 @@ import Element1 from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 //
-axios.defaults.baseURL = 'http:localhost:3000';
-Vue.prototype.$axios=axios;
+
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(VuerResource)
 Vue.use(Mint)
@@ -21,9 +21,21 @@ Vue.use(Element1)
 // Vue.use(Button)
 /* eslint-disable no-new */
 
+// 跨域请求参数
+
+let mixins = {
+  data: function () {
+    return {
+      xhrFields: {xhrFields: '{ withCredentials: true }'},
+      baseXhrUrl: 'http://localhost:3000'
+    }
+  }
+}
+
 new Vue({
   el: '#app',
   router,
+  mixins: [mixins],
   template: '<App/>',
   components: {
     App

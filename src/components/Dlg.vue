@@ -107,8 +107,8 @@ export default {
           params: this.loginInfo
         })
         .then(function(res) {
-          console.log(res);
-
+          //console.log(res);
+          window.sessionStorage.setItem["uid"]=res.data.account.id;//用sessionstorage存储登录的用户uid
           that.$axios
             .get(
               that.apiList.playListApi,
