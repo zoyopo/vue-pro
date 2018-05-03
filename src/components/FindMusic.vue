@@ -1,9 +1,7 @@
 <template>
     <div class="findmusic" ref="wrapper">
         <Nav></Nav>
-        <slide :loop ='loop' :autoPlay='autoPlay' :picArray="picArray">
-         
-            <div v-for="(item,index) in picArray" class="slider-item"><img :src="item.pic"/></div>
+        <slide :loop ='loop' :autoPlay='autoPlay' :picArray="picArray">           
           
         </slide>
     <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle"></box>
