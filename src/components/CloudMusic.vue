@@ -4,6 +4,7 @@
   <Nav v-on:showLoginDlg="showLoginDlg"></Nav>
   <!--flex布局-->
   <div class="mainPart">
+    
   <PanelPart ></PanelPart>
   
    <FindMusic></FindMusic>

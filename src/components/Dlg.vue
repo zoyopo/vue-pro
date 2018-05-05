@@ -86,8 +86,8 @@ export default {
         xhrFields: "{ withCredentials: true }"
       },
       apiList: {
-        loginApi: "http://localhost:3000/login/cellphone", //登录api
-        playListApi: "http://localhost:3000/user/playlist" //歌单api
+        loginApi: "/login/cellphone", //登录api
+        playListApi: "/user/playlist" //歌单api
       },
       requestObject: {
         loginRequest() {
