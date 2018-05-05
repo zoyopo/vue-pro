@@ -11,7 +11,8 @@ import Element1 from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 //
-
+axios.defaults.baseURL = 'http://localhost:3000'
+// axios.defaults.withCredentials = false
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(VuerResource)

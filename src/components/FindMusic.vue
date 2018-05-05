@@ -35,9 +35,7 @@ export default {
     getBannerData: function() {
       let that = this;
       this.$axios
-        .get(that.$root.baseXhrUrl + "/banner", {
-          params: that.$root.xhrFields
-        })
+        .get("/banner")
         .then(res => {
           that.picArray = res.data.banners;
         });
