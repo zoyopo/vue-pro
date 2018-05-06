@@ -10,6 +10,8 @@
 </template>
 
 <script>
+
+
 export default {
   props: {
     navList: {
@@ -40,6 +42,7 @@ export default {
       }
     }
   }
+  
 };
 </script>
 

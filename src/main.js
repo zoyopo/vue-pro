@@ -10,33 +10,47 @@ import 'mint-ui/lib/style.css'
 import Element1 from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
+import vuex from 'vuex'
 //
 axios.defaults.baseURL = 'http://localhost:3000'
 // axios.defaults.withCredentials = false
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
-Vue.use(VuerResource)
-Vue.use(Mint)
-Vue.use(Element1)
+Vue.use(vuex)
+
+
+
+const store = new vuex.Store({
+  state: {
+    userInfo: {},
+    playListInfo: {}
+  },
+  mutations: {
+    storeUserInfo(state, playload) {
+
+      state.userInfo = playload;
+      sessionStorage.setItem('userInfo',JSON.stringify(playload));
+    },
+    storePlayListInfo(state, playload) {
+      state.playListInfo = playload;
+
+    }
+  },
+  actions: {},
+  getters: {}
+})
 
 // Vue.use(Button)
 /* eslint-disable no-new */
 
 // 跨域请求参数
 
-let mixins = {
-  data: function () {
-    return {
-      xhrFields: {xhrFields: '{ withCredentials: true }'},
-      baseXhrUrl: 'http://localhost:3000'
-    }
-  }
-}
+
 
 new Vue({
   el: '#app',
+  store,
   router,
-  mixins: [mixins],
   template: '<App/>',
   components: {
     App

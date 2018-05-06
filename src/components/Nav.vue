@@ -20,8 +20,14 @@
       <div class="nav-right">
         <!-- <div class="user-info"> -->
         <div class="user_info">
-          <!-- <img class="user-pic" src="../assets/logo.png" alt="图片暂无"/> -->
-          <i @click="loginClick" class="fa fa-user-circle-o"></i>
+          <!-- <div > -->
+          <img v-if="Object.keys(userInfo).length!==0" class="user-pic" :src="userInfo.profile.avatarUrl" alt="图片暂无"/>
+            <img v-else-if="Object.keys(storedInfo).length!==0" class="user-pic" :src="storedInfo.profile.avatarUrl" alt="图片暂无"/>
+          
+          <!-- </div> -->
+          <!-- <div >  -->
+          <i  v-else @click="loginClick" class="fa fa-user-circle-o"></i>
+          <!-- </div> -->
           <div class="user-name"><i @click="loginClick" class="fa fa-sort-desc"></i></div>
         </div>
        
@@ -38,15 +44,17 @@
 
 <script>
 
-
+// 在单独构建的版本中辅助函数为 Vuex.mapState
+import { mapState } from 'vuex'
 export default {
   components:{
     
   },
   data() {
     return {
-      num: 1
-      
+      num: 1,
+      //userInfo:{}
+      storedInfo:sessionStorage.getItem('userInfo')==null?{}:JSON.parse(sessionStorage.getItem('userInfo'))
     };
   },
   methods: {
@@ -58,6 +66,12 @@ export default {
       //alert(1)
     }
   }
+  ,
+
+  computed:mapState({
+    userInfo:state=>state.userInfo  
+    
+  }) 
 };
 </script>
 
@@ -134,7 +148,8 @@ $flex-display: flex;
   /* -- */
 }
 .user-pic{
-  @extend .logo-common;
+  flex: 1;
+  width: 20px;
 }
 .user-info,.user-skin,.user-mail,.user-setting{flex: 1;width: 80px;}
 </style>
