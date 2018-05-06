@@ -32,4 +32,5 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 <h1>This is a cloud-music App I'm developing,I wish i could hold on to complete it </h1>
 
 <h2>开发日志</h2>
+
 <div><span>2018.05.07&nbsp;&nbsp;</span>使用vuex进行登录信息的响应以及sessionstorage存储</div>
