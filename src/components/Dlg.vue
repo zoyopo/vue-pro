@@ -124,12 +124,14 @@ export default {
           if (res.data.code == "200") {
             //将用户某些信息显示，例如头像
             //用vuex sotore用户信息            
-            that.$store.commit("storeUserInfo", res.data);
-            that.dlgShow = false;
+           
+            //sthat.dlgShow = false;
+             that.$store.commit("storeUserInfo", res.data);
             //debugger
             that.playListRequest(res).then(_res => {
               //debugger
-              that.$store.commit("storePlayListInfo", _res.data.playlist);
+             // that.$store.commit("storePlayListInfo", _res.data.playlist);
+              that.$emit('returnPlayList',{playlist:_res.data.playlist,dlgshow:false});
              
             });
           }

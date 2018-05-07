@@ -19,7 +19,7 @@ Vue.use(vuex)
 const store = new vuex.Store({
   state: {
     userInfo: {},
-    playListInfo: {}
+    playListInfo: []
   },
   mutations: {
     storeUserInfo (state, playload) {

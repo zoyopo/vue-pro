@@ -8,21 +8,27 @@
           {{rows.title}}
            </div>
             <li class="panel-row" v-for="row in rows.rows">
-                <a :href="row.rowHref">
-                    <i :class="row.rowIcon"></i>
-                    <span>{{row.rowName}}</span>
-                    <span v-if="row.rowBadge"><i class=""></i></span>
+                <a :href="row.href">
+                    <i :class="row.icon"></i>
+                    <span>{{row.name}}</span>
+                    <span v-if="row.badge"><i class=""></i></span>
                 </a>
             </li>           
         </ul>
         <!--我创建的的歌单-->   
-          <!-- <ul  class="ul-left">
-            <li class="panel-row" v-for="row in rows.rows">
-
-
+          <ul  class="ul-left" v-if="playList.lengh>0">
+             <div class="panel-title">
+               创建的歌单
+             </div>
+            <li class="panel-row" v-for="row in playList">
+                <a href="">
+                    <i :class="row.icon"></i>
+                    <span>{{row.name}}</span>
+                    <!-- <span v-if=""><i class=""></i></span> -->
+                </a>
             </li>
 
-          </ul> -->
+          </ul>
     </div>
     <!--音乐信息框-->
     <div class="music-board">
@@ -74,28 +80,28 @@ export default {
             title: "推荐",
             rows: [
               {
-                rowName: "发现音乐",
-                rowIcon: "fa fa-music",
-                rowHref: "",
-                rowBadge: false
+                name: "发现音乐",
+                icon: "fa fa-music",
+                href: "",
+                badge: false
               },
               {
-                rowName: "私人FM",
-                rowIcon: "fa fa-podcast",
-                rowHref: "",
-                rowBadge: false
+                name: "私人FM",
+                icon: "fa fa-podcast",
+                href: "",
+                badge: false
               },
               {
-                rowName: "MV",
-                rowIcon: "fa fa-television",
-                rowHref: "",
-                rowBadge: false
+                name: "MV",
+                icon: "fa fa-television",
+                href: "",
+                badge: false
               },
               {
-                rowName: "朋友",
-                rowIcon: "fa fa-users",
-                rowHref: "",
-                rowBadge: false
+                name: "朋友",
+                icon: "fa fa-users",
+                href: "",
+                badge: false
               }
             ]
           },
@@ -103,44 +109,44 @@ export default {
             title: "我的音乐",
             rows: [
               {
-                rowName: "本地音乐",
-                rowIcon: "fa fa-music",
-                rowHref: "",
-                rowBadge: false
+                name: "本地音乐",
+                icon: "fa fa-music",
+                href: "",
+                badge: false
               },
               {
-                rowName: "下载管理",
-                rowIcon: "fa fa-podcast",
-                rowHref: "",
-                rowBadge: false
+                name: "下载管理",
+                icon: "fa fa-podcast",
+                href: "",
+                badge: false
               },
               {
-                rowName: "我的音乐云盘",
-                rowIcon: "fa fa-television",
-                rowHref: "",
-                rowBadge: false
+                name: "我的音乐云盘",
+                icon: "fa fa-television",
+                href: "",
+                badge: false
               },
               {
-                rowName: "我的电台",
-                rowIcon: "fa fa-users",
-                rowHref: "",
-                rowBadge: false
+                name: "我的电台",
+                icon: "fa fa-users",
+                href: "",
+                badge: false
               },
               {
-                rowName: "我的收藏",
-                rowIcon: "fa fa-users",
-                rowHref: "",
-                rowBadge: false
+                name: "我的收藏",
+                icon: "fa fa-users",
+                href: "",
+                badge: false
               }
             ]
           }
         ];
       }
     },
-    playList:{
-      type:Array,
-      default:()=>[]
-    }    
+    playList: {
+      type: Array,
+      default: () => []
+    }
   },
   // mounted: function() {
 
@@ -166,6 +172,17 @@ export default {
         return ele.substring(0, index) + "..";
       }
     }
+  },
+  watch:{
+    playList(newVal,oldVal){
+      debugger
+      this.$nextTick(function(){
+
+         this.playList=newVal;
+      })
+     
+    }
+
   }
 };
 </script>
