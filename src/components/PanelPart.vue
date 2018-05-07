@@ -14,8 +14,15 @@
                     <span v-if="row.rowBadge"><i class=""></i></span>
                 </a>
             </li>           
-        </ul>   
+        </ul>
+        <!--我创建的的歌单-->   
+          <!-- <ul  class="ul-left">
+            <li class="panel-row" v-for="row in rows.rows">
 
+
+            </li>
+
+          </ul> -->
     </div>
     <!--音乐信息框-->
     <div class="music-board">
@@ -30,19 +37,19 @@
 </template>
 
 <script>
-import BScroll from 'better-scroll'
+import BScroll from "better-scroll";
 //let scroll = new BScroll('.panel-body')
 export default {
   data() {
-    return{}
+    return {};
   },
   methods: {},
   mounted() {
-      this.$nextTick(() => {
-        this.scroll = new BScroll(this.$refs.wrapper, {})
-      });
-      this.cutMusicInfo();
-    },
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper, {});
+    });
+    this.cutMusicInfo();
+  },
   props: {
     //左侧下方board信息
     boardInfo: {
@@ -126,56 +133,17 @@ export default {
                 rowBadge: false
               }
             ]
-          },
-          {
-            title: "我的歌单",
-            rows: [
-              {
-                rowName: "本地音乐",
-                rowIcon: "fa fa-music",
-                rowHref: "",
-                rowBadge: false
-              },
-              {
-                rowName: "下载管理",
-                rowIcon: "fa fa-podcast",
-                rowHref: "",
-                rowBadge: false
-              },
-              {
-                rowName: "我的音乐云盘",
-                rowIcon: "fa fa-television",
-                rowHref: "",
-                rowBadge: false
-              },
-              {
-                rowName: "我的电台",
-                rowIcon: "fa fa-users",
-                rowHref: "",
-                rowBadge: false
-              },
-              {
-                rowName: "我的收藏",
-                rowIcon: "fa fa-users",
-                rowHref: "",
-                rowBadge: false
-              }
-            ]
           }
-          
-           
         ];
       }
-    }
-    // panelTitle: {
-    //   type: String,
-    //   default: function() {
-    //     return "测试111";
-    //   }
-    // }
+    },
+    playList:{
+      type:Array,
+      default:()=>[]
+    }    
   },
   // mounted: function() {
-    
+
   // },
   methods: {
     //音乐信息过长
@@ -190,7 +158,6 @@ export default {
       }
       this.boardInfo.boardTitle = boardTitle;
       this.boardInfo.boardSinger = boardSinger;
-    
     },
     //应该写一个watch方法进行监测//filter
     cutMethods: (ele, index) => {
@@ -214,8 +181,7 @@ export default {
     margin-left: 10%;
   }
 }
-.panel-body{
-
+.panel-body {
   overflow-y: scroll;
   height: 488px;
 }
@@ -224,8 +190,8 @@ export default {
   border: 1px solid;
   max-width: 200px;
   // display: inline-block;
- // height: 550px;
- // overflow-y: scroll;
+  // height: 550px;
+  // overflow-y: scroll;
   border-top: none;
 }
 .panel-title {

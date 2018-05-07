@@ -5,7 +5,7 @@
   <!--flex布局-->
   <div class="mainPart">
     
-  <PanelPart ></PanelPart>
+  <PanelPart :playList="playList"></PanelPart>
   
    <FindMusic></FindMusic>
 
@@ -41,6 +41,31 @@ export default {
     showLoginDlg: function() {
         this.dlgshow=true;
       
+    },    
+    getPlayListInfo() {
+      var vm = this;
+      var hasUserInfo = sessionStorage.getItem("userInfo") != null;
+
+      if (hasUserInfo) {
+        var userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+
+        var userId = userInfo.account.id;
+
+        this.$axios
+          .get("/user/playlist", {
+            params: { uid: userId }
+          })
+          .then(res => {
+            
+            var newList=res.data.playlist.map(function(index,item){
+
+              
+            })
+            playList=res.data.playlist;
+
+
+          }).catch(error=>console.log(error));
+      }
     }
   },
   data() {
@@ -57,7 +82,8 @@ export default {
                     background:'#7a7460',
                     opacity: 0.95
                 },
-      picshow: true
+      picshow: true,
+      playList:[]
     };
   }
 };
