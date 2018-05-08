@@ -229,7 +229,7 @@ export default {
   //min-height: 1px;
   // position: relative;
   // margin: 0 5%;
-  height: 150px;
+  height: 200px;
   position: relative;
 }
 .slide-group {
@@ -245,7 +245,7 @@ export default {
     // text-align: center;
     // float: left;
     width: 154vw;
-    height: 150px;
+    height: 200px;
     // background: yellowgreen;
     float: left;
     a {

@@ -3,9 +3,8 @@
   <!--bug之登录弹出界面时音乐会停掉-->
   <Nav v-on:showLoginDlg="showLoginDlg" ></Nav>
   <!--flex布局-->
-  <div class="mainPart">
-    
-  <PanelPart :playList="playListInfo"></PanelPart>
+  <div class="mainPart"> 
+  <PanelPart v-if="panelRowList.length>0" :panelRowList="panelRowList"></PanelPart>
   
    <FindMusic></FindMusic>
 
@@ -23,7 +22,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import dlg from "@/components/Dlg";
 import Nav from "@/components/Nav";
 import PanelPart from "@/components/PanelPart";
@@ -39,19 +37,16 @@ export default {
     dlg
   },
   mounted() {
-   
-    
-        this.getPlayListInfo();
-      
-    
+    this.getPlayListInfo();
   },
   methods: {
     showLoginDlg: function() {
       this.dlgshow = true;
     },
-    loginReturnInfo(info){
-      this.playListInfo=info.playlist;
-       this.dlgshow = info.dlgshow;
+    loginReturnInfo(info) {
+     this.changePlayListInfo(info.playlist);
+      this.dlgshow = info.dlgshow;
+      this.getRecommendList();
     },
     getPlayListInfo() {
       //debugger
@@ -68,15 +63,43 @@ export default {
             params: { uid: userId }
           })
           .then(res => {
-            var newList = res.data.playlist.forEach(function(item, index) {
-            index === 0? (item.icon = "fa fa-heart-o")
-                : (item.icon = "fa fa-music");
-            });
-            vm.playListInfo = res.data.playlist;
-            vm.$store.commit("storePlayListInfo", newList);
+          
+            vm.changePlayListInfo(res.data.playlist);
+            vm.$store.commit("storePlayListInfo", res.data.playlist);
           })
           .catch(error => console.log(error));
       }
+    },
+    changePlayListInfo(info){
+      if(!(info instanceof Array)){
+        return;
+      }
+        info.forEach(function(item, index) {
+              index === 0
+                ? (item.icon = "fa fa-heart-o")
+                : (item.icon = "fa fa-music");
+            });
+
+            var playList=
+              {
+                title: "我创建的歌单",
+                rows: info
+              }
+            
+            this.panelRowList.push(playList);
+
+    },
+    getRecommendList(){
+      var vm=this;
+      this.$axios
+          .get("/recommend/resource",{
+            params:{
+              xhrFields:'{ withCredentials: true }'
+            }
+          })
+          .then(res=>{
+            console.log(res);
+          })
     }
   },
   data() {
@@ -94,7 +117,74 @@ export default {
         opacity: 0.95
       },
       picshow: true,
-      playListInfo: []
+      playListInfo: [],
+
+      panelRowList: [
+        {
+          title: "推荐",
+          rows: [
+            {
+              name: "发现音乐",
+              icon: "fa fa-music",
+              href: "",
+              badge: false
+            },
+            {
+              name: "私人FM",
+              icon: "fa fa-podcast",
+              href: "",
+              badge: false
+            },
+            {
+              name: "MV",
+              icon: "fa fa-television",
+              href: "",
+              badge: false
+            },
+            {
+              name: "朋友",
+              icon: "fa fa-users",
+              href: "",
+              badge: false
+            }
+          ]
+        },
+        {
+          title: "我的音乐",
+          rows: [
+            {
+              name: "本地音乐",
+              icon: "fa fa-music",
+              href: "",
+              badge: false
+            },
+            {
+              name: "下载管理",
+              icon: "fa fa-podcast",
+              href: "",
+              badge: false
+            },
+            {
+              name: "我的音乐云盘",
+              icon: "fa fa-television",
+              href: "",
+              badge: false
+            },
+            {
+              name: "我的电台",
+              icon: "fa fa-users",
+              href: "",
+              badge: false
+            },
+            {
+              name: "我的收藏",
+              icon: "fa fa-users",
+              href: "",
+              badge: false
+            }
+          ]
+        }
+      ]
     };
   }
 };
@@ -102,7 +192,7 @@ export default {
 
 <style lang="scss" scoped>
 .CloudMusic {
-  max-width: 768px;
+ max-width: 968px;
   margin: 0 auto;
 }
 .mainPart {

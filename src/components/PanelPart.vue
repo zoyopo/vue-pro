@@ -16,7 +16,7 @@
             </li>           
         </ul>
         <!--我创建的的歌单-->   
-          <ul  class="ul-left" v-if="playList.lengh>0">
+          <!-- <ul  class="ul-left" v-if="playList.lengh>0">
              <div class="panel-title">
                创建的歌单
              </div>
@@ -24,11 +24,11 @@
                 <a href="">
                     <i :class="row.icon"></i>
                     <span>{{row.name}}</span>
-                    <!-- <span v-if=""><i class=""></i></span> -->
+                  
                 </a>
             </li>
 
-          </ul>
+          </ul> -->
     </div>
     <!--音乐信息框-->
     <div class="music-board">
@@ -55,6 +55,14 @@ export default {
       this.scroll = new BScroll(this.$refs.wrapper, {});
     });
     this.cutMusicInfo();
+  },
+
+  filters:{
+    cutTitle:(value)=>{
+       if (!value) return ''
+
+    }
+
   },
   props: {
     //左侧下方board信息
@@ -147,6 +155,7 @@ export default {
       type: Array,
       default: () => []
     }
+  
   },
   // mounted: function() {
 
@@ -205,7 +214,7 @@ export default {
 .panelpart {
   //width: 20%;
   border: 1px solid;
-  max-width: 200px;
+  max-width: 250px;
   // display: inline-block;
   // height: 550px;
   // overflow-y: scroll;
@@ -243,6 +252,10 @@ export default {
 }
 .panel-row {
   list-style: none; //去圆点
+  text-overflow: ellipsis;
+    height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
   a {
     text-decoration: none; //去掉下划线
   }
