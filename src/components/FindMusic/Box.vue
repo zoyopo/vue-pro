@@ -1,16 +1,21 @@
 <template>
 
   <div class="box1" :style="boxStyle">
-    <div class="box" :style="boxStyle.box"  v-for="item in contentArray" @click="showBig(item)" :id="item.id">
+    <div class="part-title">
+      {{partTitle}}<span class="get-more">更多&gt;</span>
+    </div>
+    <div class="box" :style="boxStyle.box"   v-bind:key="index" v-for="(item,index) in contentArray" @click="showBig(item)" :id="item.id">
    
     <div class="box-content">
       <div class="box-content-pic">
-        <span>115万&nbsp;<i class="fa fa-headphones"></i></span>
-        <img-loading class="pic" :src="'../static/'+item.picUrl"></img-loading>
+        <slot>
+      
+        </slot>
+        <img-loading class="pic" :src="item.picUrl"></img-loading>
         <!-- <img class="pic" :src="'../static/'+item.picUrl" :id="item.id" alt="暂无图片" @click="showPicInfo"> -->
       </div>
       <div class="box-content-words">
-        {{item.words}}
+        {{item.name}}
       </div>
        
     </div>
@@ -22,13 +27,17 @@
 </template>
 
 <script>
-import imgLoading from '@/components/ImgLoading'
+import imgLoading from "@/components/ImgLoading";
 export default {
   name: "box",
-  components:{
+  components: {
     imgLoading
   },
   props: {
+    partTitle: {
+      type: String,
+      default: ""
+    },
     contentArray: {
       type: Array,
       default: function() {
@@ -42,17 +51,15 @@ export default {
       }
     },
     boxStyle: {
-
       type: Object,
       default: function() {
-        return {          
+        return {
           box: {
-            height:'auto'
+            height: "auto"
           },
-          box1:{
-            height:'auto'
+          box1: {
+            height: "auto"
           }
-          
         };
       }
     }
@@ -78,6 +85,22 @@ export default {
 
 
 <style lang="scss" scoped>
+/*标题*/
+.part-title {
+  margin-left: 4%;
+  border-bottom: solid 1px;
+  width: 94%;
+  margin-top: 3%;
+  position: relative;
+  font-size: 1.2rem;
+  .get-more {
+    position: absolute;
+    right: 0;
+    font-size: 0.8rem;
+    bottom: 0;
+  }
+}
+
 .box {
   display: inline-block;
   //width: 25%;
@@ -92,7 +115,7 @@ export default {
   line-height: 24px;
   //max-height: 200px;
   text-align: left;
- padding-left: 3.5%;
+  padding-left: 3.5%;
   height: 120px;
   position: relative;
 }
@@ -125,26 +148,38 @@ export default {
   display: inline-block;
   margin-left: 5px;
 }
-.box-content-words{
-      overflow: hidden;
-    // position: absolute;
-    /* text-overflow: ellipsis; */
-    /* white-space: nowrap; */
-    // -webkit-line-clamp: 3;
-    // display: -webkit-box;
-    // -webkit-box-orient: vertical;
-    height: 75px;
+.box-content-words {
+  overflow: hidden;
+  // position: absolute;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+  // -webkit-line-clamp: 3;
+  // display: -webkit-box;
+  // -webkit-box-orient: vertical;
+  height: 75px;
 }
 
-.box-content-pic{
-
+.box-content-pic {
   position: relative;
-  span{
+  .listenIcon {
     position: absolute;
     right: 0;
     top: 0;
     background: #888177;
-    font-size: .5em;
+    font-size: 0.5em;
+  }
+  .videoIcon {
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    font-size: 1em;
+    color: #fff;
+    background: #888177;
+    border-radius: 13px;
+    background-color: #342e2e;
+    width: 12%;
+    opacity: 0.5;
+    i{margin-left: 14%;}
   }
 }
 </style>
