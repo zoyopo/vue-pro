@@ -11,7 +11,7 @@ import axios from 'axios'
 import vuex from 'vuex'
 //
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://u-to-world.com:3000'
 // axios.defaults.withCredentials = false
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
