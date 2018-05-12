@@ -73,7 +73,7 @@ export default {
     this.$nextTick(() => {
       this.scroll = new BScroll(this.$refs.wrapper, {});
     });
-    this.cutMusicInfo();
+    // this.cutMusicInfo();
   },
 
   filters:{
@@ -169,25 +169,25 @@ export default {
   // },
   methods: {
     //音乐信息过长
-    cutMusicInfo: function() {
-      let boardTitle = this.boardInfo.boardTitle;
-      let boardSinger = this.boardInfo.boardSinger;
-      if (boardTitle.length > 3) {
-        boardTitle = this.cutMethods(boardTitle, 3);
-      }
-      if (boardSinger.length > 4) {
-        boardSinger = this.cutMethods(boardSinger, 3);
-      }
-      this.boardInfo.boardTitle = boardTitle;
-      this.boardInfo.boardSinger = boardSinger;
-    },
-    //应该写一个watch方法进行监测//filter
-    cutMethods: (ele, index) => {
-      //验证类型
-      if (typeof ele === "string" && typeof index === "number") {
-        return ele.substring(0, index) + "..";
-      }
-    }
+    // cutMusicInfo: function() {
+    //   let boardTitle = this.boardInfo.boardTitle;
+    //   let boardSinger = this.boardInfo.boardSinger;
+    //   if (boardTitle.length > 3) {
+    //     boardTitle = this.cutMethods(boardTitle, 3);
+    //   }
+    //   if (boardSinger.length > 4) {
+    //     boardSinger = this.cutMethods(boardSinger, 3);
+    //   }
+    //   this.boardInfo.boardTitle = boardTitle;
+    //   this.boardInfo.boardSinger = boardSinger;
+    // },
+    // //应该写一个watch方法进行监测//filter
+    // cutMethods: (ele, index) => {
+    //   //验证类型
+    //   if (typeof ele === "string" && typeof index === "number") {
+    //     return ele.substring(0, index) + "..";
+    //   }
+    // }
   }
 };
 </script>
