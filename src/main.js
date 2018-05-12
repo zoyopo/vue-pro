@@ -10,7 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import vuex from 'vuex'
 //
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://www.u-to-world.com:3000'
 // axios.defaults.withCredentials = false
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false

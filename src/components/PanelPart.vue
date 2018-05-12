@@ -3,11 +3,11 @@
       
       <!--利用两个循环进行左边各项的加载-->
     <div class="panel-body" ref="wrapper">
-        <ul v-for="rows in panelRowList" class="ul-left">
+        <ul v-for="(rows,index) in panelRowList" :key="index" class="ul-left">
           <div class="panel-title">
           {{rows.title}}
            </div>
-            <li class="panel-row" v-for="row in rows.rows">
+            <li class="panel-row" v-for="(row,index) in rows.rows" :key="index">
                 <a :href="row.href">
                     <i :class="row.icon"></i>
                     <span>{{row.name}}</span>
