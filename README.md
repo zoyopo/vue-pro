@@ -34,3 +34,5 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 <h2>开发日志</h2>
 
 <div><span>2018.05.07&nbsp;&nbsp;</span>使用vuex进行登录信息的响应以及sessionstorage存储</div>
+
+<div><span>2018.05.12&nbsp;&nbsp;</span>由于用的网易云接口都是http的，https服务器访问不了，暂且不用https</div>
