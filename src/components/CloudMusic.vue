@@ -5,8 +5,10 @@
   <!--flex布局-->
   <div class="mainPart"> 
   <PanelPart v-if="panelRowList.length>0" :panelRowList="panelRowList"></PanelPart>
-  
-   <FindMusic></FindMusic>
+  <keep-alive>
+  <router-view></router-view>
+  </keep-alive>
+   <!-- <FindMusic></FindMusic> -->
 
   </div>
   <aplayer autoplay

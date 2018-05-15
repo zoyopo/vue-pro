@@ -105,19 +105,19 @@ export default {
       videoArray:[],
       partTitle: "推荐歌单",
       contentArray: [
-        {
-          id: 2205772978,
-          type: 0,
-          name: "“一切都明明白白，但我们仍匆匆错过”",
-          copywriter: "编辑推荐：最大的遗憾，就是你的遗憾与我有关",
-          picUrl:
-            "http://p1.music.126.net/qUTZl3WqEaqhivfgF-5kvg==/109951163274328586.jpg",
-          canDislike: false,
-          playCount: 1187439.4,
-          trackCount: 103,
-          highQuality: false,
-          alg: "featured"
-        }
+        // {
+        //   id: 2205772978,
+        //   type: 0,
+        //   name: "“一切都明明白白，但我们仍匆匆错过”",
+        //   copywriter: "编辑推荐：最大的遗憾，就是你的遗憾与我有关",
+        //   picUrl:
+        //     "http://p1.music.126.net/qUTZl3WqEaqhivfgF-5kvg==/109951163274328586.jpg",
+        //   canDislike: false,
+        //   playCount: 1187439.4,
+        //   trackCount: 103,
+        //   highQuality: false,
+        //   alg: "featured"
+        // }
       ]
     };
   }

@@ -10,8 +10,8 @@
       </div>
       <div class="nav-center">
         <div>
-          <button id="btn-prev" >&lt;</button>        
-          <button id="btn-next" >&gt;</button>
+          <button id="btn-prev" @click="prev" >&lt;</button>        
+          <button id="btn-next" @click="next">&gt;</button>
         </div>
         <div>
           <input type="search" class="input-search"  placeholder="请输入你想要的music"/>
@@ -46,10 +46,12 @@
 
 // 在单独构建的版本中辅助函数为 Vuex.mapState
 import { mapState } from 'vuex'
+//import router from './router'
 export default {
   components:{
     
   },
+  
   data() {
     return {
       num: 1,
@@ -64,6 +66,12 @@ export default {
     loginClick(){
        this.$emit("showLoginDlg");
       //alert(1)
+    },
+    prev(){
+      router.go(-1)
+    },
+    next(){
+    router.go(1)
     }
   }
   ,

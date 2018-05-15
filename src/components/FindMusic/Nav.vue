@@ -28,7 +28,7 @@ export default {
           },
           {
             navTitle: "歌单",
-            navHref: ""
+            navHref: "#/songsheets"
           },
           {
             navTitle: "主播电台",
