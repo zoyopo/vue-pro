@@ -68,10 +68,10 @@ export default {
       //alert(1)
     },
     prev(){
-      router.go(-1)
+     this.$router.go(-1)
     },
     next(){
-    router.go(1)
+    this.$router.go(1)
     }
   }
   ,

@@ -2,7 +2,7 @@
 <!--root-->
  <div class="nav">
      <ul id="findMusic-nav-ul">
-         <li class="findMusic-nav-li" v-for="item in navList"><a :href="item.navHref">{{item.navTitle}}</a></li>
+         <li class="findMusic-nav-li" v-for="item in navList"><router-link :to="item.navHref" tag="a">{{item.navTitle}}</router-link></li>
      </ul>
      
      
@@ -28,7 +28,7 @@ export default {
           },
           {
             navTitle: "歌单",
-            navHref: "#/songsheets"
+            navHref: "songsheets"
           },
           {
             navTitle: "主播电台",
