@@ -1,15 +1,28 @@
 <template>
     <div class="findmusic" ref="wrapper">
         <Nav></Nav>
-       <router-view></router-view>
+        <keep-alive>
+  <router-view></router-view>
+  </keep-alive>
+      <!-- <MusicContent></MusicContent> -->
     </div>
 </template>
 <script>
-import Nav from '@/components/FindMusic/Nav'
+import Nav from "@/components/FindMusic/Nav.vue";
+import BScroll from "better-scroll";
+import MusicContent from "@/components/FindMusic/FindMusicContent.vue";
 export default {
   name: "findmusic",
-  components:{
-    Nav
+  components: {
+    //Slide,
+    Nav,
+   // Box
+   MusicContent
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.wrapper, {});
+    });
   }
 };
 </script>
