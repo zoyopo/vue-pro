@@ -1,10 +1,32 @@
 <template>
 <div class="select-tab">
  <meaning-label></meaning-label>
+ <div class="box-content">
  <TabBox 
  :name="'全部歌单'" 
  :boxstyle="styles">
  </TabBox>
+ <TabBox 
+ :name="'全部歌单'" 
+ :boxstyle="styles">
+ </TabBox>
+ <TabBox 
+ :name="'全部歌单'" 
+ :boxstyle="styles">
+ </TabBox>
+  <TabBox 
+ :name="'全部歌单'" 
+ :boxstyle="styles">
+ </TabBox>
+  <TabBox 
+ :name="'全部歌单'" 
+ :boxstyle="styles">
+ </TabBox>
+  <TabBox 
+ :name="'全部歌单'" 
+ :boxstyle="styles">
+ </TabBox>
+ </div>
 </div>
 </template>
 
@@ -20,12 +42,19 @@ export default {
   data(){
       return{
           styles:{
-              width:'60%'
+              width:''
           }
       }
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.box-content{
+    display: inline-block;
+    vertical-align: top;
+    width: 80%
+}
 </style>
+
+

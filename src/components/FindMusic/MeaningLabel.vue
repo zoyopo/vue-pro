@@ -24,6 +24,8 @@ props:{
 </script>
 
 <style lang="scss" scoped>
-
+.meaning-label{
+    display: inline-block;
+}
 </style>
 
