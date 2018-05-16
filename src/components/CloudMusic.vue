@@ -5,11 +5,10 @@
   <!--flex布局-->
   <div class="mainPart"> 
   <PanelPart v-if="panelRowList.length>0" :panelRowList="panelRowList"></PanelPart>
- 
-  <keep-alive>
-  <router-view></router-view>
-  </keep-alive>
-  
+
+  <router-view>
+    
+  </router-view>
    <!-- <FindMusic></FindMusic> -->
 
   </div>
@@ -26,6 +25,7 @@
 </template>
 
 <script>
+import nav from "@/components/FindMusic/Nav.vue";
 import dlg from "@/components/Dlg";
 import Nav from "@/components/Nav";
 import PanelPart from "@/components/PanelPart";
@@ -38,7 +38,9 @@ export default {
     PanelPart,
     FindMusic,
     //Box
-    dlg
+    dlg,
+    nav
+    
   },
   mounted() {
     this.getPlayListInfo();

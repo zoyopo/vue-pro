@@ -17,7 +17,7 @@
             var newImg = new Image()
             newImg.src = this.src
             newImg.onerror = () => {    // 图片加载错误时的替换图片
-                newImg.src = './static/Img/FindMusic/imgerror.gif'
+               // newImg.src = './static/Img/FindMusic/imgerror.gif'
             }
             newImg.onload = () => { // 图片加载成功后把地址给原来的img
                 this.url = newImg.src

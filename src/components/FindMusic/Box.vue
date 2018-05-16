@@ -1,7 +1,7 @@
 <template>
 
   <div class="box1" :style="boxStyle">
-    <div class="part-title">
+    <div class="part-title" v-show="titleShow">
       {{partTitle}}<span class="get-more">更多&gt;</span>
     </div>
     <div class="box" :style="boxStyle.box"   v-bind:key="index" v-for="(item,index) in contentArray" @click="showBig(item)" :id="item.id">
@@ -37,6 +37,10 @@ export default {
     partTitle: {
       type: String,
       default: ""
+    },
+    titleShow:{
+      type:Boolean,
+      default:true
     },
     contentArray: {
       type: Array,

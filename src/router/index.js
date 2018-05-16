@@ -6,6 +6,7 @@ import nav from '@/components/Nav'
 import CloudMusic from '@/components/CloudMusic'
 import FindMusic from '@/components/FindMusic'
 import SongSheets from '@/components/FindMusic/SongSheets'
+import FindMUsicContent from '@/components/FindMusic/FindMUsicContent'
 Vue.use(Router)
 
 export default new Router({
@@ -19,13 +20,17 @@ export default new Router({
           // 当 /user/:id/profile 匹配成功，
           // UserProfile 会被渲染在 User 的 <router-view> 中
           path: '/',
-          component: FindMusic
-        },
-        {
-          // 当 /user/:id/posts 匹配成功
-          // UserPosts 会被渲染在 User 的 <router-view> 中
-          path: 'songsheets',
-          component: SongSheets
+          component: FindMusic,
+          children: [
+            {
+              path: 'songsheets',
+              component: SongSheets
+            },
+            {
+              path: '/',
+              component: FindMUsicContent
+            }
+          ]
         }
       ]
     },
