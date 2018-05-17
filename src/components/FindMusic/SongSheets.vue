@@ -124,10 +124,10 @@ export default {
             }
             if (categoriesData.data.code == "200") {
               //先把数据存入vuex
-               let data = categoriesData.data;
+               var data = categoriesData.data;
               vm.$store.commit("storeCategoriesInfo",data);
-             
-              let categories = data.categories;
+             debugger
+              var categories = data.categories;
               for (let item in categories) {
                 let list = data.sub.filter(_item => _item.category === item);
                 let data = { name: categories[item], categoryList: list };
