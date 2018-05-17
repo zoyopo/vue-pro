@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import nav from "@/components/FindMusic/Nav.vue";
+
 import dlg from "@/components/Dlg";
 import Nav from "@/components/Nav";
 import PanelPart from "@/components/PanelPart";
@@ -39,8 +39,8 @@ export default {
     PanelPart,
     FindMusic,
     //Box
-    dlg,
-    nav
+    dlg
+    
     
   },
   mounted() {

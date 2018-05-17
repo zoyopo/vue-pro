@@ -38,7 +38,7 @@
         <div class="music-singer"><span>{{boardInfo.boardSinger}}</span><span class="music-option music-like"><i :class="boardInfo.likeIcon"></i></span></div>
       </div>
     </div> -->
-    <broadInfo :boardInfo="broadInfo"></broadInfo>
+    <broadInfo></broadInfo>
   </div>
 
 </template>
@@ -46,26 +46,21 @@
 <script>
 import BScroll from "better-scroll";
 //let scroll = new BScroll('.panel-body')
-import broadInfo from "@/components/FindMusic/broadInfo"
+import broadInfo from "@/components/FindMusic/broadInfo";
 export default {
-  components:{
+  components: {
     broadInfo
   },
   data() {
     return {
       //左侧下方board信息
-    boardInfo: {
-      type: Object,
-      default: function() {
-        return {
-          boardPic: "../static/Img/PanelPart/test2.jpg",
-          boardTitle: "不露声色11111111",
-          boardSinger: "张信哲",
-          likeIcon: "fa fa-heart-o",
-          shareIcon: "fa fa-share-square-o"
-        };
+      boardInfo: {
+        boardPic: "../static/Img/PanelPart/test2.jpg",
+        boardTitle: "不露声色11111111",
+        boardSinger: "张信哲",
+        likeIcon: "fa fa-heart-o",
+        shareIcon: "fa fa-share-square-o"
       }
-    }
     };
   },
   methods: {},
@@ -76,16 +71,12 @@ export default {
     // this.cutMusicInfo();
   },
 
-  filters:{
-    cutTitle:(value)=>{
-       if (!value) return ''
-
+  filters: {
+    cutTitle: value => {
+      if (!value) return "";
     }
-
   },
   props: {
-    
-
     //左侧panel数据
     panelRowList: {
       type: Array,
@@ -162,7 +153,6 @@ export default {
       type: Array,
       default: () => []
     }
-  
   },
   // mounted: function() {
 
@@ -249,9 +239,9 @@ export default {
 .panel-row {
   list-style: none; //去圆点
   text-overflow: ellipsis;
-    height: 24px;
-    overflow: hidden;
-    white-space: nowrap;
+  height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
   a {
     text-decoration: none; //去掉下划线
   }

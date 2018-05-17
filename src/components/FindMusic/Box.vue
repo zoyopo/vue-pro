@@ -9,9 +9,9 @@
 
       <div class="box-content">
         <div class="box-content-pic">
-          <slot>
+          <!-- <slot>
 
-          </slot>
+          </slot> -->
           <img-loading class="pic" :src="item.picUrl"></img-loading>
           <!-- <img class="pic" :src="'../static/'+item.picUrl" :id="item.id" alt="暂无图片" @click="showPicInfo"> -->
         </div>
