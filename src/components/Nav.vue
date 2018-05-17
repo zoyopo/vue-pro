@@ -154,6 +154,7 @@ $flex-display: flex;
   -webkit-justify-content: center;
   justify-content: center;
   /* -- */
+  
 }
 .user-pic{
   flex: 1;

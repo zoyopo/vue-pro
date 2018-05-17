@@ -1,59 +1,126 @@
 <template>
-<div class="select-tab">
- <meaning-label></meaning-label>
- <div class="box-content">
- <TabBox 
- :name="'全部歌单'" 
- :boxstyle="styles">
- </TabBox>
- <TabBox 
- :name="'全部歌单'" 
- :boxstyle="styles">
- </TabBox>
- <TabBox 
- :name="'全部歌单'" 
- :boxstyle="styles">
- </TabBox>
-  <TabBox 
- :name="'全部歌单'" 
- :boxstyle="styles">
- </TabBox>
-  <TabBox 
- :name="'全部歌单'" 
- :boxstyle="styles">
- </TabBox>
-  <TabBox 
- :name="'全部歌单'" 
- :boxstyle="styles">
- </TabBox>
- </div>
-</div>
+    <div class="select-tab" :style="tabStyle">
+        <Header></Header>
+        <TabBox :name="'全部歌单'" :boxstyle="allStyles">
+        </TabBox>
+        <!-- <div v-if="Object.keys(categories).length>0"> -->
+        <div class="label-content" v-for="(item,index) in categories" :key="index">
+            <meaning-label :name="item.name"></meaning-label>
+            <div class="box-content">
+                <TabBox :name="_item.name" :boxstyle="styles" v-for="(_item,_index) in item.categoryList" :key="_index">
+                </TabBox>
+                 <!-- <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox> -->
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="label-content">
+            <meaning-label></meaning-label>
+            <div class="box-content">
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+            </div>
+        </div>
+        <div class="label-content">
+            <meaning-label></meaning-label>
+            <div class="box-content">
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+                <TabBox :name="'全部歌单'" :boxstyle="styles">
+                </TabBox>
+            </div>
+        </div> -->
+    </div>
 </template>
 
 <script>
-import TabBox from "@/components/FindMusic/TabBox";
-import MeaningLabel from "@/components/FindMusic/MeaningLabel";
+import TabBox from "@/components/FindMusic/SelectTab/TabBox";
+import MeaningLabel from "@/components/FindMusic/SelectTab/MeaningLabel";
+import Header from "@/components/FindMusic/SelectTab/Header";
 export default {
   components: {
     TabBox,
-    MeaningLabel
+    MeaningLabel,
+    Header
   },
-  methods:{},
-  data(){
-      return{
-          styles:{
-              width:''
-          }
-      }
+  methods: {},
+  data() {
+    return {
+      styles: {
+        width: ""
+      },
+      allStyles: {
+        width: "94%",
+        margin: "2px 1.5%"
+      },
+      _categories: {}
+    };
+  },
+  mounted() {
+    this.categories = this.$store.state.CategoriesInfo.categories;
+  },
+  props: {
+    tabStyle: {
+      type: Object,
+      default: {}
+    },
+    categories: {
+      type:Array,
+      default: []
+    }
+  },
+  methods: {
+    // getcategoriesById(id) {
+    //   return this.$store.getter.getcategoriesById(id);
+    // }
+  },
+  computed: {
+    // categories() {
+    //   return this.$store.state.CategoriesInfo.categories;
+    // },
+    // all() {
+    //   return this.$store.state.CategoriesInfo.all;
+    // }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.box-content{
-    display: inline-block;
-    vertical-align: top;
-    width: 80%
+.box-content {
+  display: inline-block;
+  vertical-align: top;
+  width: 75%;
+  font-size: 0;
+}
+.label-content {
+  margin-top: 10px;
 }
 </style>
 

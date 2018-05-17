@@ -29,6 +29,7 @@ export default {
   text-align: center;
   border: solid 1px #b9a7a76b;
   padding: 1%;
+  font-size: 1rem;
 }
 .selected-box {
   border: solid 1px #5ddb14;

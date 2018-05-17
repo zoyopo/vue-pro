@@ -1,12 +1,22 @@
 <template>
-   <!--音乐信息框-->
-    <div class="music-board">
-      <div class="music-pic"><img id="music-img" :src="boardInfo.boardPic"></div>
-      <div class="music-description">
-        <div class="music-title"><span>{{boardInfo.boardTitle|limitLength|paramsValidate}}</span><span class="music-option music-share"><i :class="boardInfo.shareIcon"></i></span></div>
-        <div class="music-singer"><span>{{boardInfo.boardSinger|limitLength|paramsValidate}}</span><span class="music-option music-like"><i :class="boardInfo.likeIcon"></i></span></div>
+  <!--音乐信息框-->
+  <div class="music-board">
+    <div class="music-pic"><img id="music-img" :src="boardInfo.boardPic"></div>
+    <div class="music-description">
+      <div class="music-title">
+        <span>{{boardInfo.boardTitle|limitLength|paramsValidate}}</span>
+        <span class="music-option music-share">
+          <i :class="boardInfo.shareIcon"></i>
+        </span>
+      </div>
+      <div class="music-singer">
+        <span>{{boardInfo.boardSinger|limitLength|paramsValidate}}</span>
+        <span class="music-option music-like">
+          <i :class="boardInfo.likeIcon"></i>
+        </span>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -109,6 +119,10 @@ export default {
     .music-option {
       position: absolute;
       right: 4px;
+      
+    }
+    .music-share{
+      top:24px;
     }
   }
 }

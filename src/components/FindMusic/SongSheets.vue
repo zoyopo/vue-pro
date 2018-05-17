@@ -1,14 +1,17 @@
 <template>
-<div class="songsheets">
-  <select-tab></select-tab>
-    <Tags 
-    :tags="tags">
+  <div class="songsheets">
+    <button class="select-button" @click="showTab">{{buttonName}}
+      <i class="fa fa-angle-down"></i>
+    </button>
+
+    <select-tab v-show="tabIsShow" :tabStyle="tabStyle" :categories="categoriesData"></select-tab>
+
+    <Tags :tags="tags">
     </Tags>
-    <box 
-    v-bind:contentArray="contentArray" 
-    v-bind:boxStyle="boxStyle" 
-    :partTitle="partTitle" :titleShow="false">
-        <span class="listenIcon">115万&nbsp;<i class="fa fa-headphones"></i></span>
+    <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle" :titleShow="false">
+      <span class="listenIcon">115万&nbsp;
+        <i class="fa fa-headphones"></i>
+      </span>
     </box>
   </div>
 </template>
@@ -16,7 +19,7 @@
 <script>
 import Tags from "@/components/FindMusic/HotTag";
 import Box from "@/components/FindMusic/Box";
-import SelectTab from '@/components/FindMusic/SelectTab'
+import SelectTab from "@/components/FindMusic/SelectTab";
 
 export default {
   components: {
@@ -26,10 +29,23 @@ export default {
   },
   data() {
     return {
-      tags:[],
+      tabIsShow: false,
+      tabStyle: {
+        position: "absolute",
+        background: "#fff",
+        "z-index": "100",
+        border: "solid 1px #9e9797",
+        "border-radius": "5px",
+        left: "3.5%",
+        top: "60px",
+        height: "350px",
+        "overflow-y": "auto"
+      },
+      tags: [],
       boxStyle: {
         box: { height: "100px" }
       },
+      buttonName: "全部歌单",
       videoBoxStyle: {
         box: { width: "29%" }
       },
@@ -50,7 +66,9 @@ export default {
           highQuality: false,
           alg: "featured"
         }
-      ]
+      ],
+      categories: {},
+      categoriesData: []
     };
   },
   mounted() {},
@@ -69,7 +87,8 @@ export default {
             order: "new"
           }
         }),
-        tagData: vm.$axios.get("/playlist/hot")
+        tagData: vm.$axios.get("/playlist/hot"),
+        songCategoriesData: vm.$axios.get("/playlist/catlist") //歌单分类
       };
     },
     getData() {
@@ -87,9 +106,13 @@ export default {
         })
         .catch(err => console.log(err));
       vm.$axios
-        .all([vm.promises().playlistData, vm.promises().tagData])
+        .all([
+          vm.promises().playlistData,
+          vm.promises().tagData,
+          vm.promises().songCategoriesData
+        ])
         .then(
-          vm.$axios.spread(function(playlistData, tagData) {
+          vm.$axios.spread(function(playlistData, tagData, categoriesData) {
             // Both requests are now complete
             // console.log(acct);
             // console.log(perms);
@@ -97,15 +120,47 @@ export default {
               vm.contentArray = playlistData.data.playlists;
             }
             if (tagData.data.code == "200") {
-              vm.tags = tagData.data.tags; 
+              vm.tags = tagData.data.tags;
+            }
+            if (categoriesData.data.code == "200") {
+              //先把数据存入vuex
+               let data = categoriesData.data;
+              vm.$store.commit("storeCategoriesInfo",data);
+             
+              let categories = data.categories;
+              for (let item in categories) {
+                let list = data.sub.filter(_item => _item.category === item);
+                let data = { name: categories[item], categoryList: list };
+                vm.categoriesData.push(data);
+              }
             }
           })
         )
         .catch(err => console.log(err));
+    },
+    showTab() {
+      this.tabIsShow = true;
     }
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.select-button {
+  margin-top: 4%;
+  margin-left: 3.5%;
+  background: #ffffffc5;
+  border: solid 1px #41493749;
+  border-radius: 2px;
+  width: 15%;
+  height: 26px;
+  line-height: 26px;
+  .fa-angle-down {
+    padding-left: 10%;
+  }
+}
+.songsheets {
+  position: relative;
+}
 </style>
+

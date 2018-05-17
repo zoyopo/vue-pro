@@ -9,8 +9,7 @@ import 'mint-ui/lib/style.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import vuex from 'vuex'
-//
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; 
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.baseURL = '//u-to-world.com:3000'
 // axios.defaults.withCredentials = false
 Vue.prototype.$axios = axios
@@ -20,7 +19,8 @@ Vue.use(vuex)
 const store = new vuex.Store({
   state: {
     userInfo: {},
-    playListInfo: []
+    playListInfo: [],
+    CategoriesInfo: {}
   },
   mutations: {
     storeUserInfo (state, playload) {
@@ -29,6 +29,9 @@ const store = new vuex.Store({
     },
     storePlayListInfo (state, playload) {
       state.playListInfo = playload
+    },
+    storeCategoriesInfo (state, playload) {
+      state.CategoriesInfo = playload
     }
   },
   actions: {},

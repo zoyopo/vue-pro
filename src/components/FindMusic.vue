@@ -1,11 +1,11 @@
 <template>
-    <div class="findmusic" ref="wrapper">
-        <Nav></Nav>
-        <keep-alive>
-  <router-view></router-view>
-  </keep-alive>
-      <!-- <MusicContent></MusicContent> -->
-    </div>
+  <div class="findmusic" ref="wrapper">
+    <Nav></Nav>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <!-- <MusicContent></MusicContent> -->
+  </div>
 </template>
 <script>
 import Nav from "@/components/FindMusic/Nav.vue";
@@ -16,8 +16,8 @@ export default {
   components: {
     //Slide,
     Nav,
-   // Box
-   MusicContent
+    // Box
+    MusicContent
   },
   mounted() {
     this.$nextTick(() => {

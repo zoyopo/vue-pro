@@ -1,22 +1,24 @@
 <template>
-<div class="findmusiccontent">
-     <div v-if="picArray.length>0">
-        <slide :loop ='loop' :autoPlay='autoPlay' :picArray="picArray">           
-          
-        </slide>
-        </div>
-    <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle">
-        <span class="listenIcon">115万&nbsp;<i class="fa fa-headphones"></i></span>
-    </box>
-      <box v-bind:contentArray="videoArray" v-bind:boxStyle="videoBoxStyle" :partTitle="'独家放送'">
-        <span class="videoIcon"><i class="fa fa-video-camera"></i></span>
-    </box>
+  <div class="findmusiccontent">
+    <div v-if="picArray.length>0">
+      <slide :loop='loop' :autoPlay='autoPlay' :picArray="picArray">
+
+      </slide>
     </div>
+    <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle">
+      <span class="listenIcon">115万&nbsp;
+        <i class="fa fa-headphones"></i>
+      </span>
+    </box>
+    <box v-bind:contentArray="videoArray" v-bind:boxStyle="videoBoxStyle" :partTitle="'独家放送'">
+      <span class="videoIcon">
+        <i class="fa fa-video-camera"></i>
+      </span>
+    </box>
+  </div>
 </template>
 
 <script>
-
-
 import Slide from "@/components/Slider.vue";
 import Box from "@/components/FindMusic/Box";
 import BScroll from "better-scroll";
@@ -24,9 +26,8 @@ export default {
   name: "findmusic",
   components: {
     Slide,
-   //Nav,
+    //Nav,
     Box
- 
   },
   mounted() {
     this.$nextTick(() => {
@@ -61,32 +62,34 @@ export default {
       return {
         personalizedData: vm.$axios.get("/personalized"),
         bannerData: vm.$axios.get("/banner"),
-        privateContent:vm.$axios.get("/personalized/privatecontent")//独家放送
+        privateContent: vm.$axios.get("/personalized/privatecontent") //独家放送
       };
     },
     getAllData() {
       let vm = this;
       vm.$axios
-        .all(
-          [vm.getData().personalizedData, vm.getData().bannerData,vm.getData().privateContent]
-          )
+        .all([
+          vm.getData().personalizedData,
+          vm.getData().bannerData,
+          vm.getData().privateContent
+        ])
         .then(
-          vm.$axios.spread(function(personalized, banner,privateContent) {
+          vm.$axios.spread(function(personalized, banner, privateContent) {
             // Both requests are now complete
-           // console.log(acct);
-           // console.log(perms);
-           if(banner.data.code=="200"){
-             vm.picArray = banner.data.banners;
-           }
-            if(personalized.data.code=="200"){
+            // console.log(acct);
+            // console.log(perms);
+            if (banner.data.code == "200") {
+              vm.picArray = banner.data.banners;
+            }
+            if (personalized.data.code == "200") {
               vm.contentArray = personalized.data.result.slice(0, 8); //土鳖法，截取前八
-           }
-           if(privateContent.data.code=="200"){
-             privateContent.data.result.forEach(element => {
-               element.picUrl=element.sPicUrl;
-             });
-             vm.videoArray=privateContent.data.result;
-           }
+            }
+            if (privateContent.data.code == "200") {
+              privateContent.data.result.forEach(element => {
+                element.picUrl = element.sPicUrl;
+              });
+              vm.videoArray = privateContent.data.result;
+            }
           })
         );
     }
@@ -97,14 +100,13 @@ export default {
       loop: true,
       autoPlay: true,
       boxStyle: {
-        box: { height: "100px" },
-       
+        box: { height: "100px" }
       },
-      videoBoxStyle:{
-        box:{width:"29%"}
+      videoBoxStyle: {
+        box: { width: "29%" }
       },
       picArray: [],
-      videoArray:[],
+      videoArray: [],
       partTitle: "推荐歌单",
       contentArray: [
         // {
@@ -127,5 +129,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

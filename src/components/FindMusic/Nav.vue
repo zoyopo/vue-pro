@@ -2,9 +2,8 @@
 <!--root-->
  <div class="nav">
      <ul id="findMusic-nav-ul">
-         <li class="findMusic-nav-li" v-for="item in navList"><router-link :to="item.navHref" tag="a">{{item.navTitle}}</router-link></li>
-     </ul>
-     
+         <li class="findMusic-nav-li" v-for="(item,index) in navList" :key="index"><router-link :to="item.navHref" tag="a">{{item.navTitle}}</router-link></li>
+     </ul>    
      
 </div>
 </template>

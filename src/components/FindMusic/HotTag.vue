@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .hottag {
-  margin-top: 60px;
+  margin-top: 10px;
   .tag-content {
     display: inline-block;
     padding-left: 2%;

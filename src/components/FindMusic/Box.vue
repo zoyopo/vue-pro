@@ -2,26 +2,25 @@
 
   <div class="box1" :style="boxStyle">
     <div class="part-title" v-show="titleShow">
-      {{partTitle}}<span class="get-more">更多&gt;</span>
+      {{partTitle}}
+      <span class="get-more">更多&gt;</span>
     </div>
-    <div class="box" :style="boxStyle.box"   v-bind:key="index" v-for="(item,index) in contentArray" @click="showBig(item)" :id="item.id">
-   
-    <div class="box-content">
-      <div class="box-content-pic">
-        <slot>
-      
-        </slot>
-        <img-loading class="pic" :src="item.picUrl"></img-loading>
-        <!-- <img class="pic" :src="'../static/'+item.picUrl" :id="item.id" alt="暂无图片" @click="showPicInfo"> -->
+    <div class="box" :style="boxStyle.box" v-bind:key="index" v-for="(item,index) in contentArray" @click="showBig(item)" :id="item.id">
+
+      <div class="box-content">
+        <div class="box-content-pic">
+          <slot>
+
+          </slot>
+          <img-loading class="pic" :src="item.picUrl"></img-loading>
+          <!-- <img class="pic" :src="'../static/'+item.picUrl" :id="item.id" alt="暂无图片" @click="showPicInfo"> -->
+        </div>
+        <div class="box-content-words">
+          {{item.name}}
+        </div>
+
       </div>
-      <div class="box-content-words">
-        {{item.name}}
-      </div>
-       
-    </div>
-    <!-- <div class="box-option">
-    
-    </div> -->
+
     </div>
   </div>
 </template>
@@ -38,9 +37,9 @@ export default {
       type: String,
       default: ""
     },
-    titleShow:{
-      type:Boolean,
-      default:true
+    titleShow: {
+      type: Boolean,
+      default: true
     },
     contentArray: {
       type: Array,
@@ -183,7 +182,9 @@ export default {
     background-color: #342e2e;
     width: 12%;
     opacity: 0.5;
-    i{margin-left: 14%;}
+    i {
+      margin-left: 14%;
+    }
   }
 }
 </style>
