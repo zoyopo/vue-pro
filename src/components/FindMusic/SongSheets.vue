@@ -39,7 +39,8 @@ export default {
         left: "3.5%",
         top: "60px",
         height: "350px",
-        "overflow-y": "auto"
+        "overflow-y": "auto",
+        width:'90%'
       },
       tags: [],
       boxStyle: {
@@ -124,16 +125,14 @@ export default {
             }
             if (categoriesData.data.code == "200") {
               //先把数据存入vuex
-              var data = categoriesData.data;
-              vm.$store.commit("storeCategoriesInfo", data);
-              //debugger;
-             // let storeData=vm.$store.state.storeCategoriesInfo;
-
-              let _categories = data.categories;//赋值语句不起作用
+               var data = categoriesData.data;
+              vm.$store.commit("storeCategoriesInfo",data);
+             //debugger
+              //var categories = data.categories;
               for (let item in categoriesData.data.categories) {
-                let list = categoriesData.data.sub.filter((_item) => {return _item.category == item});
-                let _data = { name: categoriesData.data.categories[item], categoryList: list };
-                vm.categoriesData.push(_data);
+                let list = categoriesData.data.sub.filter((_item) =>{return _item.category == item});
+                let data = { name: categoriesData.data.categories[item], categoryList: list };
+                vm.categoriesData.push(data);
               }
             }
           })

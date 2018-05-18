@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Test from '@/components/Test' // component下vue模块的引入
 import Register from '@/components/Register'
-import nav from '@/components/Nav'
+// import nav from '@/components/Nav'
 import CloudMusic from '@/components/CloudMusic'
 import FindMusic from '@/components/FindMusic'
 import SongSheets from '@/components/FindMusic/SongSheets'
@@ -17,7 +17,7 @@ export default new Router({
       component: CloudMusic,
       children: [
         {
-          //当 /user/:id/profile 匹配成功，
+          // 当 /user/:id/profile 匹配成功，
           // UserProfile 会被渲染在 User 的 <router-view> 中
           path: '/',
           component: FindMusic,
@@ -29,14 +29,14 @@ export default new Router({
             {
               path: '/',
               component: FindMusicContent
-    
+
             }
-    
+
           ]
         }
 
       ]
-    }, 
+    },
     {
       path: '/findmusic',
       name: 'findmusic',
