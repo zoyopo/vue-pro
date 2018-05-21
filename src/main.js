@@ -9,6 +9,7 @@ import 'mint-ui/lib/style.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import vuex from 'vuex'
+
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.baseURL = '//u-to-world.com:3000'
 // axios.defaults.withCredentials = false
@@ -20,7 +21,8 @@ const store = new vuex.Store({
   state: {
     userInfo: {},
     playListInfo: [],
-    CategoriesInfo: {}
+    CategoriesInfo: {},
+    arrayInfo: []
   },
   mutations: {
     storeUserInfo (state, playload) {
@@ -32,10 +34,23 @@ const store = new vuex.Store({
     },
     storeCategoriesInfo (state, playload) {
       state.CategoriesInfo = playload
+    },
+    pushInfo (state, playload) {
+      state.arrayInfo.push(playload)
+    },
+    removeArrayInfo (state, playload) {
+      var index = state.arrayInfo.indexOf(playload)
+      if (index > -1) {
+        state.arrayInfo.splice(index, 1)
+      }
     }
   },
   actions: {},
-  getters: {}
+  getters: {
+    getcategoriesById: (state) => (id) => {
+      return state.CategoriesInfo.sub.find(todo => todo.category === id)
+    }
+  }
 })
 
 // Vue.use(Button)

@@ -35,5 +35,6 @@ export default {
   height: 561px;
   overflow-y: scroll;
   border-bottom: 1px solid;
+  
 }
 </style>

@@ -4,10 +4,7 @@
   <Nav v-on:showLoginDlg="showLoginDlg" ></Nav>
   <!--flex布局-->
   <div class="mainPart"> 
-  <PanelPart v-if="panelRowList.length>0" :panelRowList="panelRowList"></PanelPart>
- 
-  
-  
+  <PanelPart v-if="panelRowList.length>0" :panelRowList="panelRowList"></PanelPart> 
   <keep-alive>
   <router-view></router-view>
   </keep-alive>
@@ -22,11 +19,13 @@
   } " class="player"
  />
   <dlg :dlgShow="dlgshow" :dlgSize="dlgsize" :picShow="picshow" v-on:returnPlayList="loginReturnInfo"></dlg>
+   
 </div>
+
 </template>
 
 <script>
-
+import tableBody from '@/components/TableBody'
 import dlg from "@/components/Dlg";
 import Nav from "@/components/Nav";
 import PanelPart from "@/components/PanelPart";
@@ -111,6 +110,7 @@ export default {
   },
   data() {
     return {
+     
       dlgshow: false,
       //很奇怪我的default没有生效
       dlgsize: {

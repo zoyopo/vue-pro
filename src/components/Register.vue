@@ -82,9 +82,11 @@ $altrerColor:#000;
 .mint-button--normal{
   width:100%;
   margin-top: 22%;
+  
 }
 .mint-cell-title{
   color:$altrerColor;
+  
 }
 
 </style>
