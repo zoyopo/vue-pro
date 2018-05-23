@@ -4,7 +4,7 @@
       <i class="fa fa-angle-down"></i>
     </button>
 
-    <select-tab v-show="tabIsShow" :tabStyle="tabStyle" :categories="categoriesData"></select-tab>
+    <select-tab @getTabName="getTabName" v-show="tabIsShow" :tabStyle="tabStyle" :categories="categoriesData"></select-tab>
 
     <Tags :tags="tags">
     </Tags>
@@ -79,6 +79,10 @@ export default {
     this.getData();
   },
   methods: {
+    getTabName(name){
+      this.tabIsShow=false;
+      this.buttonName=name;
+    },
     promises() {
       let vm = this;
       return {

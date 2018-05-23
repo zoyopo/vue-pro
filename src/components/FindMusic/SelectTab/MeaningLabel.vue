@@ -1,13 +1,15 @@
 <template>
-    <div class="meaning-label" :style="labelStyle">
-        <i :class="iconClass"></i>
-        <span>{{name}}</span>
-    </div>
+  <div class="meaning-label" :style="labelStyle">
+    <i :class="iconClass"></i>
+    <span>{{name}}</span>
+  </div>
 </template>
 
 <script>
 export default {
-  data() {},
+  data() {
+    return {};
+  },
   props: {
     name: {
       type: String,
@@ -19,10 +21,12 @@ export default {
     },
     labelStyle: {
       type: Object,
-      default: {
+      default:function() {
+        return{
         display: "inline-block",
         "margin-right": "5%",
-        'margin-left':'2%'
+        "margin-left": "2%"
+        }
       }
     }
   }

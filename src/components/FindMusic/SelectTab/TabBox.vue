@@ -1,9 +1,9 @@
 <template>
-    <div class="tab-box" :style="boxstyle">
-        {{name}}
-        <div class="selected-icon"></div>
-        <div class="tick"></div>
-    </div>
+  <div :class="tabStyle" :style="boxstyle" @click="tabClick(name)">
+    {{name}}
+    <div class="selected-icon" v-show="isSelected"></div>
+    <div class="tick" v-show="isSelected"></div>
+  </div>
 </template>
 
 <script>
@@ -18,6 +18,29 @@ export default {
       type: Object,
       defalult: {}
     }
+  },
+  data() {
+    return {
+      isSelected: false,
+      tabStyle: {
+        "selected-box": false,
+        "unselected-box": true
+      }
+    };
+  },
+  methods: {
+    tabClick(name) {
+      this.isSelected = true;
+      //this.$emit()
+      //this.tabStyle["selected-box"] = true;
+      //this.tabStyle["unselected-box"] = false;
+      this.borderChange("selected-box","unselected-box")
+      this.$emit("getTabName", name);
+    },
+    borderChange(first, second) {
+      this.tabStyle[first] = true;
+      this.tabStyle[second] = false;
+    }
   }
 };
 </script>
@@ -27,13 +50,18 @@ export default {
   display: inline-block;
   position: relative;
   text-align: center;
-  border: solid 1px #b9a7a76b;
+
   padding: 1%;
   font-size: 1rem;
-  width:20%;
+  width: 20%;
+}
+.unselected-box {
+  border: solid 1px #b9a7a76b;
+  @extend .tab-box;
 }
 .selected-box {
   border: solid 1px #5ddb14;
+  @extend .tab-box;
 }
 .selected-icon {
   position: absolute;

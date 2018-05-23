@@ -7,56 +7,12 @@
         <div class="label-content" v-for="(item,index) in categories" :key="index">
             <meaning-label :name="item.name"></meaning-label>
             <div class="box-content">
-                <TabBox :name="_item.name" :boxstyle="styles" v-for="(_item,_index) in item.categoryList" :key="_index">
+                <TabBox @getTabName="getTabName" :name="_item.name" :boxstyle="styles" v-for="(_item,_index) in item.categoryList" :key="_index">
                 </TabBox>
-                 <!-- <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox> -->
+               
             </div>
         </div>
-        <!-- </div> -->
-        <!-- <div class="label-content">
-            <meaning-label></meaning-label>
-            <div class="box-content">
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-            </div>
-        </div>
-        <div class="label-content">
-            <meaning-label></meaning-label>
-            <div class="box-content">
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-                <TabBox :name="'全部歌单'" :boxstyle="styles">
-                </TabBox>
-            </div>
-        </div> -->
+       
     </div>
 </template>
 
@@ -100,6 +56,9 @@ export default {
     // getcategoriesById(id) {
     //   return this.$store.getter.getcategoriesById(id);
     // }
+    getTabName(name){
+      this.$emit('getTabName',name)
+    }
   },
   computed: {
     // categories() {
