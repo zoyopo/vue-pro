@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import tableBody from '@/components/TableBody'
+
 import dlg from "@/components/Dlg";
 import Nav from "@/components/Nav";
 import PanelPart from "@/components/PanelPart";
