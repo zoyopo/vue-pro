@@ -82,6 +82,7 @@ export default {
     getTabName(name){
       this.tabIsShow=false;
       this.buttonName=name;
+      console.log(this.$children[0].$children[7].data.isS);
     },
     promises() {
       let vm = this;
