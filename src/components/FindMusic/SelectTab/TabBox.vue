@@ -17,15 +17,19 @@ export default {
     boxstyle: {
       type: Object,
       defalult: {}
+    },
+    activeName:{
+      type:String,
+      defalult:""
     }
   },
   data() {
     return {
-      isSelected: false,
-      tabStyle: {
-        "selected-box": false,
-        "unselected-box": true
-      }
+      // isSelected: false,
+      // tabStyle: {
+      //   "selected-box": false,
+      //   "unselected-box": true
+      // }
     };
   },
   methods: {
@@ -34,13 +38,25 @@ export default {
       //this.$emit()
       //this.tabStyle["selected-box"] = true;
       //this.tabStyle["unselected-box"] = false;
-      this.borderChange("selected-box","unselected-box")
+     // this.borderChange("selected-box","unselected-box");
       this.$emit("getTabName", name);
-    },
-    borderChange(first, second) {
-      this.tabStyle[first] = true;
-      this.tabStyle[second] = false;
+      console.log(this)
     }
+    // borderChange(first, second) {
+    //   this.tabStyle[first] = true;
+    //   this.tabStyle[second] = false;
+    // }
+  },
+  computed:{
+    tabStyle(){
+      return{
+        "selected-box":this.activeName===this.name,
+        "unselected-box":this.activeName!==this.name
+      }     
+    },
+    isSelected(){
+        return this.activeName===this.name?true:false
+      }
   }
 };
 </script>

@@ -7,7 +7,7 @@
         <div class="label-content" v-for="(item,index) in categories" :key="index">
             <meaning-label :name="item.name"></meaning-label>
             <div class="box-content">
-                <TabBox @getTabName="getTabName" :name="_item.name" :boxstyle="styles" v-for="(_item,_index) in item.categoryList" :key="_index">
+                <TabBox @getTabName="getTabName" :name="_item.name" :boxstyle="styles" v-for="(_item,_index) in item.categoryList" :key="_index" :activeName="activeName">
                 </TabBox>
                
             </div>
@@ -29,6 +29,7 @@ export default {
   methods: {},
   data() {
     return {
+      activeName:"",
       styles: {
         width: ""
       },
@@ -57,6 +58,7 @@ export default {
     //   return this.$store.getter.getcategoriesById(id);
     // }
     getTabName(name){
+      this.activeName=name;
       this.$emit('getTabName',name)
     }
   },
