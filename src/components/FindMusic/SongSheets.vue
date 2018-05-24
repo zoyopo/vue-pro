@@ -4,7 +4,7 @@
       <i class="fa fa-angle-down"></i>
     </button>
 
-    <select-tab @getTabName="getTabName" v-show="tabIsShow" :tabStyle="tabStyle" :categories="categoriesData"></select-tab>
+    <select-tab @getTabName="getTabName" v-show="tabIsShow" :tabStyle="tabStyle" :categories="categoriesData"  v-clickoutside="handleClose"></select-tab>
 
     <Tags :tags="tags">
     </Tags>
@@ -20,13 +20,14 @@
 import Tags from "@/components/FindMusic/HotTag";
 import Box from "@/components/FindMusic/Box";
 import SelectTab from "@/components/FindMusic/SelectTab";
-
+import {clickoutside} from "@/directives/common.js"
 export default {
   components: {
     Box,
     Tags,
     SelectTab
   },
+  directives: {clickoutside},
   data() {
     return {
       tabIsShow: false,
@@ -79,6 +80,9 @@ export default {
     this.getData();
   },
   methods: {
+   handleClose(){
+      this.tabIsShow=false;
+    },
     getTabName(name){
       this.tabIsShow=false;
       this.buttonName=name;

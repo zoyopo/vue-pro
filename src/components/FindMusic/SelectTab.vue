@@ -8,8 +8,7 @@
             <meaning-label :name="item.name"></meaning-label>
             <div class="box-content">
                 <TabBox @getTabName="getTabName" :name="_item.name" :boxstyle="styles" v-for="(_item,_index) in item.categoryList" :key="_index" :activeName="activeName">
-                </TabBox>
-               
+                </TabBox>               
             </div>
         </div>
        
