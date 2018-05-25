@@ -7,6 +7,7 @@ import CloudMusic from '@/components/CloudMusic'
 import FindMusic from '@/components/FindMusic'
 import SongSheets from '@/components/FindMusic/SongSheets'
 import FindMusicContent from '@/components/FindMusic/FindMusicContent'
+import RollingCD from '@/components/MusicDetail/rollingCD'
 Vue.use(Router)
 
 export default new Router({
@@ -56,11 +57,11 @@ export default new Router({
 
       ]
     },
-    // {
-    //   path: '/',
-    //   name: 'nav',
-    //   component: nav
-    // },
+    {
+      path: '/RollingCD',
+      name: 'RollingCD',
+      component: RollingCD
+    },
     {
       path: '/test', // 路由
       name: 'Test',
