@@ -36,3 +36,12 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 <div><span>2018.05.07&nbsp;&nbsp;</span>使用vuex进行登录信息的响应以及sessionstorage存储</div>
 
 <div><span>2018.05.12&nbsp;&nbsp;</span>由于用的网易云接口都是http的，https服务器访问不了，暂且不用https</div>
+
+<div><span>2018.05.26&nbsp;&nbsp;</span>下一步将歌单详情页，播放音乐详情完成,主要可能涉及到一些问题如下
+    <ul>
+    <li>旋转cd动画的暂停与开始</li>
+    <li>歌曲列表组件的选取或者自己实现</li>
+    <li>点击播放的音乐显示信息的动画（因为音乐条用的是别人的组件，绑定事件需明白）</li>
+    <li>歌词滚动</li>
+    </ul>
+</div>

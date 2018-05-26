@@ -1,7 +1,7 @@
 <template>
     <div class="select-tab" :style="tabStyle">
         <Header></Header>
-        <TabBox :name="'全部歌单'" :boxstyle="allStyles">
+        <TabBox @getTabName="getTabName" :name="allName" :boxstyle="allStyles" :activeName="activeName">
         </TabBox>
         <!-- <div v-if="Object.keys(categories).length>0"> -->
         <div class="label-content" v-for="(item,index) in categories" :key="index">
@@ -28,7 +28,8 @@ export default {
   methods: {},
   data() {
     return {
-      activeName:"",
+      allName:"全部歌单",
+      activeName:"全部歌单",
       styles: {
         width: ""
       },

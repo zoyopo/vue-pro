@@ -106,9 +106,10 @@ export default {
       this.promises()
         .playlistData.then(res => {
           if (res.data.code == "200") {
-            res.data.playlists.forEach(element => {
-              element.picUrl = element.coverImgUrl;
-            });
+          //  let data= 
+          //  data.forEach(element => {
+          //     element.picUrl = element.coverImgUrl;
+          //   });
             vm.contentArray = res.data.playlists;
           } else {
             console.log("error");

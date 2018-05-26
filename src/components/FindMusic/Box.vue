@@ -1,6 +1,6 @@
 <template>
 
-  <div class="box1" :style="boxStyle">
+  <div class="box1" :style="boxStyle" >
     <div class="part-title" v-show="titleShow">
       {{partTitle}}
       <span class="get-more">更多&gt;</span>
@@ -12,7 +12,7 @@
           <!-- <slot>
 
           </slot> -->
-          <img-loading class="pic" :src="item.picUrl"></img-loading>
+          <img-loading class="pic" :src="item.picUrl||item.coverImgUrl"></img-loading>
           <!-- <img class="pic" :src="'../static/'+item.picUrl" :id="item.id" alt="暂无图片" @click="showPicInfo"> -->
         </div>
         <div class="box-content-words">

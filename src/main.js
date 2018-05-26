@@ -9,14 +9,21 @@ import 'mint-ui/lib/style.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import vuex from 'vuex'
-
+import VueLazyload from 'vue-lazyload'
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.baseURL = '//u-to-world.com:3000'
 // axios.defaults.withCredentials = false
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(vuex)
-
+//图片懒加载
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'dist/error.png',
+  loading: '../static/Img/FindMusic/loading.gif',
+  attempt: 1,
+  listenEvents: [ 'scroll' ]
+})
 const store = new vuex.Store({
   state: {
     userInfo: {},
