@@ -4,7 +4,7 @@
       <i class="fa fa-angle-down"></i>
     </button>
 
-    <select-tab @getTabName="getTabName" v-show="tabIsShow" :tabStyle="tabStyle" :categories="categoriesData"  v-clickoutside="handleClose"></select-tab>
+    <select-tab @getTabName="getTabName" v-show="tabIsShow" :tabStyle="tabStyle" :categories="categoriesData" v-clickoutside="handleClose"></select-tab>
 
     <Tags :tags="tags">
     </Tags>
@@ -20,14 +20,14 @@
 import Tags from "@/components/FindMusic/HotTag";
 import Box from "@/components/FindMusic/Box";
 import SelectTab from "@/components/FindMusic/SelectTab";
-import {clickoutside} from "@/directives/common.js"
+import { clickoutside } from "@/directives/common.js";
 export default {
   components: {
     Box,
     Tags,
     SelectTab
   },
-  directives: {clickoutside},
+  directives: { clickoutside },
   data() {
     return {
       tabIsShow: false,
@@ -41,7 +41,7 @@ export default {
         top: "60px",
         height: "350px",
         "overflow-y": "auto",
-        width:'90%'
+        width: "90%"
       },
       tags: [],
       boxStyle: {
@@ -80,23 +80,21 @@ export default {
     this.getData();
   },
   methods: {
-   handleClose(){
-      this.tabIsShow=false;
+    handleClose() {
+      this.tabIsShow = false;
     },
-    getTabName(name){
-      this.tabIsShow=false;
-      this.buttonName=name;
-      console.log(this.$children[0].$children[7].data.isS);
+    getTabName(name) {
+      this.tabIsShow = false;
+      this.buttonName = name;
     },
     promises() {
       let vm = this;
       return {
-        playlistData: vm.$axios.get("/top/playlist", {
-          params: {
-            limit: 10,
-            order: "new"
-          }
-        }),
+        playlistData: function(params) {
+          return vm.$axios.get("/top/playlist", {
+            params
+          });
+        },
         tagData: vm.$axios.get("/playlist/hot"),
         songCategoriesData: vm.$axios.get("/playlist/catlist") //歌单分类
       };
@@ -104,12 +102,15 @@ export default {
     getData() {
       let vm = this;
       this.promises()
-        .playlistData.then(res => {
+        .playlistData({
+              limit: 10,
+              order: "new"
+            }).then(res => {
           if (res.data.code == "200") {
-          //  let data= 
-          //  data.forEach(element => {
-          //     element.picUrl = element.coverImgUrl;
-          //   });
+            //  let data=
+            //  data.forEach(element => {
+            //     element.picUrl = element.coverImgUrl;
+            //   });
             vm.contentArray = res.data.playlists;
           } else {
             console.log("error");
@@ -135,13 +136,18 @@ export default {
             }
             if (categoriesData.data.code == "200") {
               //先把数据存入vuex
-               var data = categoriesData.data;
-              vm.$store.commit("storeCategoriesInfo",data);
-             //debugger
+              var data = categoriesData.data;
+              vm.$store.commit("storeCategoriesInfo", data);
+              //debugger
               //var categories = data.categories;
               for (let item in categoriesData.data.categories) {
-                let list = categoriesData.data.sub.filter((_item) =>{return _item.category == item});
-                let data = { name: categoriesData.data.categories[item], categoryList: list };
+                let list = categoriesData.data.sub.filter(_item => {
+                  return _item.category == item;
+                });
+                let data = {
+                  name: categoriesData.data.categories[item],
+                  categoryList: list
+                };
                 vm.categoriesData.push(data);
               }
             }
