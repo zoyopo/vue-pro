@@ -22,6 +22,12 @@ Vue.use(VueLazyload, {
 //
 //vue-table2
 Vue.use(vuetable);
+// function install(Vue){
+//   Vue.component("vuetable", Vuetable);
+//   Vue.component("vuetable-pagination", VueTablePagination);
+//   Vue.component("vuetable-pagination-dropdown", VueTablePaginationDropDown);
+//   Vue.component("vuetable-pagination-info", VueTablePaginationInfo);
+// }
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.baseURL = '//u-to-world.com:3000'
 // axios.defaults.withCredentials = false
