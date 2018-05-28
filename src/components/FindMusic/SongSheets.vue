@@ -84,8 +84,20 @@ export default {
       this.tabIsShow = false;
     },
     getTabName(name) {
+      let vm = this;
       this.tabIsShow = false;
       this.buttonName = name;
+      this.promises()
+        .playlistData({
+          limit: 100,
+          order: "new",
+          cat: name
+        })
+        .then(res => {
+          if (res.data.code == "200") {
+            vm.contentArray = res.data.playlists;
+          }
+        }).catch(err=>{console.error(err)});
     },
     promises() {
       let vm = this;
@@ -101,25 +113,28 @@ export default {
     },
     getData() {
       let vm = this;
-      this.promises()
-        .playlistData({
-              limit: 10,
-              order: "new"
-            }).then(res => {
-          if (res.data.code == "200") {
-            //  let data=
-            //  data.forEach(element => {
-            //     element.picUrl = element.coverImgUrl;
-            //   });
-            vm.contentArray = res.data.playlists;
-          } else {
-            console.log("error");
-          }
-        })
-        .catch(err => console.log(err));
+      // this.promises()
+      //   .playlistData({
+      //         limit: 100,
+      //         order: "new"
+      //       }).then(res => {
+      //     if (res.data.code == "200") {
+      //       //  let data=
+      //       //  data.forEach(element => {
+      //       //     element.picUrl = element.coverImgUrl;
+      //       //   });
+      //       vm.contentArray = res.data.playlists;
+      //     } else {
+      //       console.log("error");
+      //     }
+      //   })
+      //   .catch(err => console.log(err));
       vm.$axios
         .all([
-          vm.promises().playlistData,
+          vm.promises().playlistData({
+            limit: 100,
+            order: "new"
+          }),
           vm.promises().tagData,
           vm.promises().songCategoriesData
         ])
@@ -136,8 +151,8 @@ export default {
             }
             if (categoriesData.data.code == "200") {
               //先把数据存入vuex
-              var data = categoriesData.data;
-              vm.$store.commit("storeCategoriesInfo", data);
+              //var data = categoriesData.data;
+              vm.$store.commit("storeCategoriesInfo", categoriesData.data);
               //debugger
               //var categories = data.categories;
               for (let item in categoriesData.data.categories) {

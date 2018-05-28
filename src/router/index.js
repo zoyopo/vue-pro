@@ -8,6 +8,7 @@ import FindMusic from '@/components/FindMusic'
 import SongSheets from '@/components/FindMusic/SongSheets'
 import FindMusicContent from '@/components/FindMusic/FindMusicContent'
 import RollingCD from '@/components/MusicDetail/rollingCD'
+import TableArea from '@/components/FindMusic/SongSheetsDetail/TableArea'
 Vue.use(Router)
 
 export default new Router({
@@ -62,6 +63,12 @@ export default new Router({
       name: 'RollingCD',
       component: RollingCD
     },
+    {
+      path: '/TableArea',
+      name: 'TableArea',
+      component: TableArea
+    },
+    
     {
       path: '/test', // 路由
       name: 'Test',
