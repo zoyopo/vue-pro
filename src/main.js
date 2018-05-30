@@ -4,15 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import 'mint-ui/lib/style.css'
+// import 'mint-ui/lib/style.css'
 
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import vuex from 'vuex'
 import VueLazyload from 'vue-lazyload'
 // vue-table2
-// import {ServerTable, ClientTable, Event} from 'vue-tables-2'
-// Vue.use(ClientTable)
+import {ServerTable, ClientTable, Event} from 'vue-tables-2'
+Vue.use(ClientTable)
  // lazyLoad
 // Vue.use(VueLazyload)
 Vue.use(VueLazyload, {
