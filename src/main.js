@@ -10,8 +10,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
 import vuex from 'vuex'
 import VueLazyload from 'vue-lazyload'
-import vuetable from "vuetable-2"
-//lazyLoad
+// vue-table2
+// import {ServerTable, ClientTable, Event} from 'vue-tables-2'
+// Vue.use(ClientTable)
+ // lazyLoad
 // Vue.use(VueLazyload)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
@@ -20,8 +22,7 @@ Vue.use(VueLazyload, {
   attempt: 1
 })
 //
-//vue-table2
-Vue.use(vuetable);
+
 // function install(Vue){
 //   Vue.component("vuetable", Vuetable);
 //   Vue.component("vuetable-pagination", VueTablePagination);
