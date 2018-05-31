@@ -31,6 +31,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css");
+//@import url("https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css");
 
 </style>
