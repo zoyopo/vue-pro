@@ -10,27 +10,27 @@ import FindMusicContent from '@/components/FindMusic/FindMusicContent'
 import RollingCD from '@/components/MusicDetail/rollingCD'
 import TableArea from '@/components/FindMusic/SongSheetsDetail/TableArea'
 Vue.use(Router)
-const view = (path,name) => () => import(`@/components/${path}${name}`)
+const view = (path, name) => () => import(`@/components/${path}${name}`)
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'CloudMusic',
-      component:view('','CloudMusic'),
+      component: view('', 'CloudMusic'),
       children: [
         {
           // 当 /user/:id/profile 匹配成功，
           // UserProfile 会被渲染在 User 的 <router-view> 中
           path: '/',
-          component: view('','FindMusic'),
+          component: view('', 'FindMusic'),
           children: [
             {
               path: 'songsheets',
-              component: view('FindMusic/','SongSheets')
+              component: view('FindMusic/', 'SongSheets')
             },
             {
               path: '/',
-              component: view('FindMusic/','FindMusicContent')
+              component: view('FindMusic/', 'FindMusicContent')
 
             }
 
@@ -68,7 +68,7 @@ export default new Router({
       name: 'TableArea',
       component: TableArea
     },
-    
+
     {
       path: '/test', // 路由
       name: 'Test',
