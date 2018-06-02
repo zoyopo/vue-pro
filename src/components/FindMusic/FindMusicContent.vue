@@ -22,6 +22,7 @@
 import Slide from "@/components/Slider.vue";
 import Box from "@/components/FindMusic/Box";
 import BScroll from "better-scroll";
+import {getFirstScreenData} from "api/api.js"
 export default {
   name: "findmusic",
   components: {
@@ -37,47 +38,22 @@ export default {
   created() {
     // this.getBannerData();
     // this.getPersonalizedData();
+    //debugger
     this.getAllData();
   },
   methods: {
-    //轮播图
-    // getBannerData: function() {
-    //   let that = this;
-    //   this.$axios.get("/banner").then(res => {
-    //     that.picArray = res.data.banners;
-    //   });
-    //   //this.$forceUpdate();
-    // },
-    //推荐歌单
-    // getPersonalizedData() {
-    //   let vm = this;
-    //   this.$axios.get("/personalized").then(res => {
-    //     if (res.data.code == "200") {
-    //       vm.contentArray = res.data.result.slice(0, 8); //土鳖法，截取前八
-    //     }
-    //   });
-    // },
-    getData() {
-      let vm = this;
-      return {
-        personalizedData: vm.$axios.get("/personalized"),
-        bannerData: vm.$axios.get("/banner"),
-        privateContent: vm.$axios.get("/personalized/privatecontent") //独家放送
-      };
-    },
+   
+    
     getAllData() {
       let vm = this;
-      vm.$axios
-        .all([
-          vm.getData().personalizedData,
-          vm.getData().bannerData,
-          vm.getData().privateContent
-        ])
+      getFirstScreenData()//封装了获取数据的方法
         .then(
-          vm.$axios.spread(function(personalized, banner, privateContent) {
-            // Both requests are now complete
-            // console.log(acct);
-            // console.log(perms);
+         function(res) {
+          
+            let banner=res[1];
+            let personalized=res[0];
+            let privateContent=res[2];
+            
             if (banner.data.code == "200") {
               vm.picArray = banner.data.banners;
             }
@@ -91,7 +67,7 @@ export default {
               vm.videoArray = privateContent.data.result;
             }
           })
-        );
+        ;
     }
   },
 

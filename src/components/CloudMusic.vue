@@ -31,6 +31,7 @@ import Nav from "@/components/Nav";
 import PanelPart from "@/components/PanelPart";
 import FindMusic from "@/components/FindMusic";
 import Aplayer from "vue-aplayer";
+import {getPlayList} from "api/api.js"
 export default {
   components: {
     Aplayer,
@@ -64,10 +65,7 @@ export default {
 
         var userId = userInfo.account.id;
 
-        this.$axios
-          .get("/user/playlist", {
-            params: { uid: userId }
-          })
+        getPlayList(userId)
           .then(res => {
           
             vm.changePlayListInfo(res.data.playlist);

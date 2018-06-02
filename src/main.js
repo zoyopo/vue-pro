@@ -11,6 +11,7 @@ import axios from 'axios'
 import vuex from 'vuex'
 import VueLazyload from 'vue-lazyload'
 // vue-table2
+import store from './store'
 import {ServerTable, ClientTable, Event} from 'vue-tables-2'
 Vue.use(ClientTable)
  // lazyLoad
@@ -23,45 +24,12 @@ Vue.use(VueLazyload, {
 })
 //
 
-// function install(Vue){
-//   Vue.component("vuetable", Vuetable);
-//   Vue.component("vuetable-pagination", VueTablePagination);
-//   Vue.component("vuetable-pagination-dropdown", VueTablePaginationDropDown);
-//   Vue.component("vuetable-pagination-info", VueTablePaginationInfo);
-// }
+
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.baseURL = '//u-to-world.com:3000'
 // axios.defaults.withCredentials = false
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
-Vue.use(vuex)
-
-const store = new vuex.Store({
-  state: {
-    userInfo: {},
-    playListInfo: [],
-    CategoriesInfo: {},
-    arrayInfo: []
-  },
-  mutations: {
-    storeUserInfo (state, playload) {
-      state.userInfo = playload
-      sessionStorage.setItem('userInfo', JSON.stringify(playload))
-    },
-    storePlayListInfo (state, playload) {
-      state.playListInfo = playload
-    },
-    storeCategoriesInfo (state, playload) {
-      state.CategoriesInfo = playload
-    }
-  },
-  actions: {},
-  getters: {
-    getcategoriesById: (state) => (id) => {
-      return state.CategoriesInfo.sub.find(todo => todo.category === id)
-    }
-  }
-})
 
 // Vue.use(Button)
 /* eslint-disable no-new */

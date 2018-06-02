@@ -23,6 +23,7 @@ import Tags from "@/components/FindMusic/HotTag";
 import Box from "@/components/FindMusic/Box";
 import SelectTab from "@/components/FindMusic/SelectTab";
 import { clickoutside } from "@/directives/common.js";
+import {getSongSheetsData} from 'api/api.js'
 export default {
   components: {
     Box,
@@ -79,6 +80,7 @@ export default {
   created() {
     // this.getBannerData();
     // this.getPersonalizedData();
+    debugger
     this.getData();
   },
   methods: {
@@ -89,15 +91,15 @@ export default {
       let vm = this;
       this.tabIsShow = false;
       this.buttonName = name;
-      this.promises()
-        .playlistData({
+      getSongSheetsData({
           limit: 100,
           order: "new",
           cat: name
-        })
+        },["playlistData"])
         .then(res => {
-          if (res.data.code == "200") {
-            vm.contentArray = res.data.playlists;
+          let _res=res[0];
+          if (_res.data.code == "200") {
+            vm.contentArray = _res.data.playlists;
           }
         }).catch(err=>{console.error(err)});
     },
@@ -131,20 +133,19 @@ export default {
       //     }
       //   })
       //   .catch(err => console.log(err));
-      vm.$axios
-        .all([
-          vm.promises().playlistData({
+      getSongSheetsData({
             limit: 100,
             order: "new"
-          }),
-          vm.promises().tagData,
-          vm.promises().songCategoriesData
-        ])
+          })     
         .then(
-          vm.$axios.spread(function(playlistData, tagData, categoriesData) {
+          function(res) {
+            debugger
             // Both requests are now complete
             // console.log(acct);
             // console.log(perms);
+            let playlistData=res[0];
+            let tagData=res[1];
+            let categoriesData=res[2];
             if (playlistData.data.code == "200") {
               vm.contentArray = playlistData.data.playlists;
             }
@@ -168,8 +169,7 @@ export default {
                 vm.categoriesData.push(data);
               }
             }
-          })
-        )
+          })        
         .catch(err => console.log(err));
     },
     showTab() {
