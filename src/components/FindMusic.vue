@@ -1,8 +1,9 @@
 <template>
   <div class="findmusic" ref="wrapper">
     <Nav></Nav>
-    <keep-alive>
-      <router-view></router-view>
+     <loading v-show="isLoading"></loading>
+    <keep-alive>       
+      <router-view v-show="!isLoading"></router-view>
     </keep-alive>
     <!-- <MusicContent></MusicContent> -->
   </div>
@@ -11,18 +12,26 @@
 import Nav from "@/components/FindMusic/Nav.vue";
 import BScroll from "better-scroll";
 import MusicContent from "@/components/FindMusic/FindMusicContent.vue";
+import Loading from "@/components/Loading";
+import { mapGetters } from 'vuex';
 export default {
   name: "findmusic",
   components: {
     //Slide,
     Nav,
     // Box
-    MusicContent
+    MusicContent,
+    Loading
   },
   mounted() {
     this.$nextTick(() => {
       this.scroll = new BScroll(this.$refs.wrapper, {});
     });
+  },
+  computed:{
+    ...mapGetters([
+      'isLoading'
+    ])
   }
 };
 </script>

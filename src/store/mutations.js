@@ -10,6 +10,10 @@ const mutations = {
   [types.storeUserInfo](state, userInfo) {
     state.userInfo = userInfo
     sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+  },
+
+  [types.FETCH_LOADING](state,isLoading){
+      state.isLoading=isLoading;
   }
 }
 

@@ -10,8 +10,9 @@ export default {
   name: "app" 
 };
 </script>
-
-<style lang="scss">
+<!--scoped会导致当页面的样式无法作用于全局-->
+<style lang="scss"> 
+@import 'common/sass/font-awesome.scss';
 $testColor: #000;
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;

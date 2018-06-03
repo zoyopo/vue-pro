@@ -64,9 +64,9 @@ export default new Router({
       component: RollingCD
     },
     {
-      path: '/TableArea',
-      name: 'TableArea',
-      component: TableArea
+      path: '/SongSheetsDetail',
+      name: 'SongSheetsDetail',
+      component: view('FindMusic/SongSheetsDetail/','Detail')
     },
 
     {

@@ -139,7 +139,7 @@ export default {
           })     
         .then(
           function(res) {
-            debugger
+           // debugger
             // Both requests are now complete
             // console.log(acct);
             // console.log(perms);
