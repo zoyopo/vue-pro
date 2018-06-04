@@ -11,7 +11,9 @@
   export default {
     name: 'loading',
     data () {
-      return {}
+      return {
+        
+      }
     },
   }
 </script>
