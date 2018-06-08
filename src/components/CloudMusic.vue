@@ -18,7 +18,7 @@
     pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
   } " class="player"
  />
-  <dlg :dlgShow="dlgshow" :dlgSize="dlgsize" :picShow="picshow" v-on:returnPlayList="loginReturnInfo"></dlg>
+  <dlg :dlgShow="dlgshow" :dlgSize="dlgsize" :picShow="picshow" @returnPlayList="loginReturnInfo"></dlg>
    
 </div>
 
@@ -44,6 +44,7 @@ export default {
     
   },
   mounted() {
+    //挂载vue实例时，获取数据
     this.getPlayListInfo();
   },
   methods: {
