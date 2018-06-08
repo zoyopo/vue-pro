@@ -34,18 +34,11 @@ export default {
   },
   methods: {
     tabClick(name) {
-      this.isSelected = true;
-      //this.$emit()
-      //this.tabStyle["selected-box"] = true;
-      //this.tabStyle["unselected-box"] = false;
-     // this.borderChange("selected-box","unselected-box");
-      this.$emit("getTabName", name);
-      console.log(this)
+      this.isSelected = true;     
+      this.$emit("getTabName", name);//将name传给父组件，渲染时名称一致的加上样式
+      //console.log(this)
     }
-    // borderChange(first, second) {
-    //   this.tabStyle[first] = true;
-    //   this.tabStyle[second] = false;
-    // }
+   
   },
   computed:{
     tabStyle(){

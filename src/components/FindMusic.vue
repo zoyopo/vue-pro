@@ -29,6 +29,7 @@ export default {
     });
   },
   computed:{
+    //用vuex来控制是否要进行loading
     ...mapGetters([
       'isLoading'
     ])

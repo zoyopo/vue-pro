@@ -32,6 +32,11 @@ export default new Router({
               path: '/',
               component: view('FindMusic/', 'FindMusicContent')
 
+            },
+            {
+              path: 'SongSheetsDetail',
+              component: view('FindMusic/SongSheetsDetail/', 'Detail')
+
             }
 
           ]
@@ -66,7 +71,7 @@ export default new Router({
     {
       path: '/SongSheetsDetail',
       name: 'SongSheetsDetail',
-      component: view('FindMusic/SongSheetsDetail/','Detail')
+      component: view('FindMusic/SongSheetsDetail/', 'Detail')
     },
 
     {

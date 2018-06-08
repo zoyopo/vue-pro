@@ -9,7 +9,9 @@
 
     <Tags :tags="tags">
     </Tags>
-    <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle" :titleShow="false">
+    <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle" :titleShow="false"
+    @click.native="showDetail"
+    >
       <span class="listenIcon">115万&nbsp;
         <i class="fa fa-headphones"></i>
       </span>
@@ -116,23 +118,7 @@ export default {
       };
     },
     getData() {
-      let vm = this;
-      // this.promises()
-      //   .playlistData({
-      //         limit: 100,
-      //         order: "new"
-      //       }).then(res => {
-      //     if (res.data.code == "200") {
-      //       //  let data=
-      //       //  data.forEach(element => {
-      //       //     element.picUrl = element.coverImgUrl;
-      //       //   });
-      //       vm.contentArray = res.data.playlists;
-      //     } else {
-      //       console.log("error");
-      //     }
-      //   })
-      //   .catch(err => console.log(err));
+      let vm = this;     
       getSongSheetsData({
             limit: 100,
             order: "new"
@@ -174,6 +160,9 @@ export default {
     },
     showTab() {
       this.tabIsShow = true;
+    },
+    showDetail(){
+      this.$router.push({ path: `/SongSheetsDetail` }) 
     }
   }
 };

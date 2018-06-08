@@ -6,17 +6,18 @@ import router from './router'
 
 // import 'mint-ui/lib/style.css'
 
- 
-//import axios from 'axios'
-//import vuex from 'vuex'
+// import axios from 'axios'
+// import vuex from 'vuex'
 import VueLazyload from 'vue-lazyload'
 // vue-table2
 import store from './store'
 import {Table,
-  TableColumn,Card} from "element-ui"
-  Vue.use(Table);
-  Vue.use(TableColumn);
-  Vue.use(Card);
+  TableColumn, Card, Button} from 'element-ui'
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Card)
+Vue.use(Button)
+// Vue.component(Button.name, Button)
 // import {ServerTable, ClientTable, Event} from 'vue-tables-2'
 // Vue.use(ClientTable)
  // lazyLoad
@@ -29,11 +30,10 @@ Vue.use(VueLazyload, {
 })
 //
 
-
-//axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
-//axios.defaults.baseURL = '//u-to-world.com:3000'
+// axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+// axios.defaults.baseURL = '//u-to-world.com:3000'
 // axios.defaults.withCredentials = false
-//Vue.prototype.$axios = axios
+// Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 // Vue.use(Button)
