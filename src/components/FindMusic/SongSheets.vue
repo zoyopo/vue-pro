@@ -10,7 +10,7 @@
     <Tags :tags="tags">
     </Tags>
     <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle" :titleShow="false"
-    @click.native="showDetail"
+    @getItemId="showDetail"
     >
       <span class="listenIcon">115万&nbsp;
         <i class="fa fa-headphones"></i>
@@ -82,7 +82,7 @@ export default {
   created() {
     // this.getBannerData();
     // this.getPersonalizedData();
-    debugger
+    //debugger
     this.getData();
   },
   methods: {
@@ -161,8 +161,9 @@ export default {
     showTab() {
       this.tabIsShow = true;
     },
-    showDetail(){
-      this.$router.push({ path: `/SongSheetsDetail` }) 
+    showDetail(item){
+      //console.log(item)
+      this.$router.push(`/SongSheetsDetail/${item.id}`) 
     }
   }
 };

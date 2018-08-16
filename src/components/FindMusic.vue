@@ -1,9 +1,9 @@
 <template>
-  <div class="findmusic" ref="wrapper">
+  <div class="findmusic">
     <Nav></Nav>
-     <loading v-show="isLoading"></loading>
+     <!-- <loading v-show="isLoading"></loading> -->
     <keep-alive>       
-      <router-view v-show="!isLoading"></router-view>
+      <router-view></router-view>
     </keep-alive>
     <!-- <MusicContent></MusicContent> -->
   </div>
@@ -24,9 +24,7 @@ export default {
     Loading
   },
   mounted() {
-    this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.wrapper, {});
-    });
+  
   },
   computed:{
     //用vuex来控制是否要进行loading

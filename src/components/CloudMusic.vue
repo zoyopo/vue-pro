@@ -198,8 +198,9 @@ export default {
 
 <style lang="scss" scoped>
 .CloudMusic {
- max-width: 968px;
-  margin: 0 auto;
+    max-width: 968px;
+    margin: 0 auto;
+    min-width: 945px;
 }
 .mainPart {
   display: flex;

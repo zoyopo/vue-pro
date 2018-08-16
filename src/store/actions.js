@@ -7,8 +7,8 @@
  export const FETCH_LOADING = function ({
      commit
    }, res) {
-     commit(types.FETCH_LOADING, res)
-   }
+   commit(types.FETCH_LOADING, res)
+ }
 
  // function findIndex(list, song) {
  //   return list.findIndex((item) => {

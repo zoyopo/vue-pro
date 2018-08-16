@@ -21,7 +21,7 @@
 <script>
 import Slide from "@/components/Slider.vue";
 import Box from "@/components/FindMusic/Box";
-import BScroll from "better-scroll";
+import { mapGetters } from 'vuex';
 import {getFirstScreenData} from "api/api.js"
 export default {
   name: "findmusic",
@@ -31,9 +31,9 @@ export default {
     Box
   },
   mounted() {
-    this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.wrapper, {});
-    });
+    // this.$nextTick(() => {
+    //   this.scroll = new BScroll(this.$refs.wrapper, {});
+    // });
   },
   created() {
     // this.getBannerData();
@@ -100,6 +100,12 @@ export default {
         // }
       ]
     };
+  },
+  computed:{
+     //用vuex来控制是否要进行loading
+    ...mapGetters([
+      'isLoading'
+    ])
   }
 };
 </script>

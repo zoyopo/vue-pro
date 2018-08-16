@@ -13,16 +13,16 @@
       <mt-tab-container v-model="active" v-bind:swipeable="isSwipe">
       <mt-tab-container-item id="外卖">
         <ul>
-        <li v-for="item in list">
+        <li v-for="item in list" :key="item">
           <img v-lazy="item">
         </li>
         </ul>
       </mt-tab-container-item>
       <mt-tab-container-item id="订单">
-      <mt-cell v-for="n in 5" title="tab-container 2"></mt-cell>
+      <mt-cell v-for="n in 5" title="tab-container 2" :key="n"></mt-cell>
       </mt-tab-container-item>
       <mt-tab-container-item id="发现">
-        <mt-cell v-for="n in 7" title="tab-container 3"></mt-cell>
+        <mt-cell v-for="n in 7" title="tab-container 3" :key="n"></mt-cell>
       </mt-tab-container-item>
       </mt-tab-container>
       <mt-tabbar v-model="selected">

@@ -36,6 +36,14 @@
 
 <script>
 export default {
+  props:{
+    info:{
+      type:Object,
+      default:()=>{
+        return {}
+      }
+    }
+  },
   data() {
     return {
       currentDate: new Date(),

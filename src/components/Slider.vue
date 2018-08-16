@@ -139,6 +139,7 @@ export default {
       }
     },
     _setSlideWidth(isResize) {
+      //debugger
       this.children = this.$refs.slideGroup.children;
       let width = 0;
       let slideWidth = this.$refs.slide.clientWidth;

@@ -3,12 +3,12 @@ import Router from 'vue-router'
 import Test from '@/components/Test' // component下vue模块的引入
 import Register from '@/components/Register'
 // import nav from '@/components/Nav'
-import CloudMusic from '@/components/CloudMusic'
+
 import FindMusic from '@/components/FindMusic'
 import SongSheets from '@/components/FindMusic/SongSheets'
 import FindMusicContent from '@/components/FindMusic/FindMusicContent'
 import RollingCD from '@/components/MusicDetail/rollingCD'
-import TableArea from '@/components/FindMusic/SongSheetsDetail/TableArea'
+
 Vue.use(Router)
 const view = (path, name) => () => import(`@/components/${path}${name}`)
 export default new Router({
@@ -34,7 +34,7 @@ export default new Router({
 
             },
             {
-              path: 'SongSheetsDetail',
+              path: 'SongSheetsDetail/:id',
               component: view('FindMusic/SongSheetsDetail/', 'Detail')
 
             }
