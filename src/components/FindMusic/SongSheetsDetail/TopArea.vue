@@ -1,15 +1,17 @@
 <template>
   <el-card :body-style="bodyStyle">
     <div class="image">
-      <img src="../../../assets/logo.png" class="">
+      <img :src="info.coverImgUrl" class="">
     </div>
     <div class="right-area">
       <div class="img-content clearfix">
-        <span class="title">好吃的汉堡</span>
-        <span class="song-num-playnum">歌曲数:1234/播放数:4321</span>
+        <span class="title">{{info.name}}</span>
+        <span class="song-num-playnum">歌曲数:{{info.trackCount}}/播放数:{{info.playCount}}</span>
         <div class="bottom">
-          <span><img id="creator" src="../../../assets/logo.png" /></span>
-          <span class="time">{{ currentDate }}</span>
+          <span><img id="creator" :src="info.creator.avatarUrl" />
+            <span>{{info.creator.nickname}}</span>
+          </span>
+          <span class="time">{{ info.createTime|timeStamp2DateStr }}</span>
         </div>
       </div>
       <!--操作按钮-->
@@ -23,24 +25,28 @@
       <!--label area -->
       <div class="tag">
         <label>标签：</label>
-        <span>摇滚/金属</span>
+        <span>{{info.tags.join('/')}}</span>
       </div>
       <!--introduction area -->
       <div class="introduction">
         <label>简介：</label>
-        <span>摇滚+金属，摇滚+金属，摇滚+金属，摇滚+金属，摇滚+金属，摇滚+金属，摇滚+金属，摇滚+金属，摇滚+金属</span>
+        <span>{{info.description}}</span>
       </div>
     </div>
   </el-card>
 </template>
 
 <script>
+import { timeStamp2DateStr } from "filter/filter";
 export default {
-  props:{
-    info:{
-      type:Object,
-      default:()=>{
-        return {}
+  filters: {
+    timeStamp2DateStr: timeStamp2DateStr
+  },
+  props: {
+    info: {
+      type: Object,
+      default: () => {
+        return {};
       }
     }
   },
@@ -57,20 +63,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.right-area{
+  overflow: hidden;
+}
 .time {
   font-size: 13px;
   color: #999;
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: bottom;
+  padding-left: 10px;
 }
 
 .bottom {
+  font-size: 13px;
   margin-top: 8px;
   line-height: 12px;
   display: table;
   #creator {
     width: 20px;
-    display: block;
+    // display: block;
   }
 }
 
@@ -105,7 +116,7 @@ export default {
   .song-num-playnum {
     font-size: 0.8rem;
     position: absolute;
-    right: 0;
+    right: -140px;
     top: 20px;
   }
   .title {
@@ -113,7 +124,7 @@ export default {
   }
 }
 .btn-group {
-  width: 64%;
+  width:  100%;
   float: left;
   padding-left: 14px;
 }
@@ -128,7 +139,7 @@ export default {
   float: left;
   padding-left: 14px;
   padding-top: 5px;
-  width: 63%;
+  width: 90%;
   font-size: 0.8rem;
 }
 </style>

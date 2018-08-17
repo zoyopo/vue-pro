@@ -16,7 +16,9 @@ export default {
  
   data(){
     return{
-      info:{}
+      info:{
+        creator:{}
+      }
     }
   },
   components: {
@@ -30,18 +32,33 @@ export default {
   methods: {
     async getDetail(id) {
       let data = await getSheetDetail(id);
-      debugger
+      //debugger
      // console.log(data);
-     this.info.coverImgUrl=data.coverImgUrl;
-     this.info.name=data.name;
-     this.info.creator.avatarUrl=data.creator.avatarUrl;
-     this.info.creator.backgroundUrl=data.creator.backgroundUrl;
-     this.info.creator.nickname=data.creator.nickname;
-     this.info.createTime=data.createTime;
-     this.info.trackCount=data.trackCount;
-     this.info.playCount=description.playCount;
-     this.info.description=data.description;
-     this.info.tags=data.tags;
+     let info={
+       coverImgUrl:data.coverImgUrl,
+       name:data.name,
+       createTime:data.createTime,
+       trackCount:data.trackCount,
+       playCount:data.playCount,
+       description:data.description,
+       tags:data.tags,
+       creator:{
+         avatarUrl:data.creator.avatarUrl,
+         backgroundUrl:data.creator.backgroundUrl,
+         nickname:data.creator.nickname
+       }
+     }
+     this.info=info;
+    //  this.info.coverImgUrl=data.coverImgUrl;
+    //  this.info.name=data.name;
+    //  this.info.creator.avatarUrl=data.creator.avatarUrl;
+    //  this.info.creator.backgroundUrl=data.creator.backgroundUrl;
+    //  this.info.creator.nickname=data.creator.nickname;
+    //  this.info.createTime=data.createTime;
+    //  this.info.trackCount=data.trackCount;
+    //  this.info.playCount=description.playCount;
+    //  this.info.description=data.description;
+    //  this.info.tags=data.tags;
     }
   }
 };

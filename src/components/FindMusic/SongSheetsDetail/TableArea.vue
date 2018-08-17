@@ -39,6 +39,10 @@
       :data="tableData"
       style="width: 100%">
       <el-table-column
+      type="index"
+       >
+      </el-table-column>
+      <el-table-column
         prop="date"
         label="日期"
         width="180">

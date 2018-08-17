@@ -45,3 +45,6 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
     <li>歌词滚动</li>
     </ul>
 </div>
+
+### 2018-08-16
+* 歌单详情头部内容的基本完成
