@@ -1,5 +1,5 @@
 import Api from './base'
-import { recomend, songsheet } from './urls'
+import { recomend, songsheet, song} from './urls'
 const axios = Api.axios()
 export function getFirstScreenData (apiNames) {
   let api = {
@@ -64,4 +64,11 @@ export function getSheetDetail (id) {
       return Promise.reject('获取数据出错')
     }
   }).catch(err => Promise.reject(err))
+}
+
+export function getUrlBySongId (id) {
+  return axios.get(song.getSongUrl, {params: {
+    id: id
+  }}).then(res => Promise.resolve(res))
+    .catch(err => Promise.reject(err))
 }

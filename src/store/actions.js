@@ -10,6 +10,11 @@
    commit(types.FETCH_LOADING, res)
  }
 
+ export const SET_CURRENT_SONG = function ({commit}, res) {
+   commit(types.SET_CURRENT_SONG, res)
+   commit(types.SET_PLAY_STATE, true)
+ }
+
  // function findIndex(list, song) {
  //   return list.findIndex((item) => {
  //     return item.id === song.id

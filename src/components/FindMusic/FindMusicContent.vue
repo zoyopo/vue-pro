@@ -5,7 +5,7 @@
 
       </slide>
     </div>
-    <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle">
+    <box v-bind:contentArray="contentArray" v-bind:boxStyle="boxStyle" :partTitle="partTitle" @getItemId="showDetail">
       <span class="listenIcon">115万&nbsp;
         <i class="fa fa-headphones"></i>
       </span>
@@ -42,7 +42,10 @@ export default {
     this.getAllData();
   },
   methods: {
-   
+    showDetail(item){
+      //console.log(item)
+      this.$router.push(`/SongSheetsDetail/${item.id}`) 
+    },
     
     getAllData() {
       let vm = this;

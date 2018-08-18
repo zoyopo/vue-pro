@@ -1,7 +1,8 @@
 <template>
   <el-card :body-style="bodyStyle">
     <div class="image">
-      <img :src="info.coverImgUrl" class="">
+      
+      <img v-lazy="info.coverImgUrl" class="">
     </div>
     <div class="right-area">
       <div class="img-content clearfix">

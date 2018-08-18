@@ -1,37 +1,30 @@
 <template>
-<div class="CloudMusic">
-  <!--bug之登录弹出界面时音乐会停掉-->
-  <Nav v-on:showLoginDlg="showLoginDlg" ></Nav>
-  <!--flex布局-->
-  <div class="mainPart"> 
-  <PanelPart v-if="panelRowList.length>0" :panelRowList="panelRowList"></PanelPart> 
-  <keep-alive>
-  <router-view></router-view>
-  </keep-alive>
+  <div class="CloudMusic">
+    <!--bug之登录弹出界面时音乐会停掉-->
+    <Nav v-on:showLoginDlg="showLoginDlg"></Nav>
+    <!--flex布局-->
+    <div class="mainPart">
+      <PanelPart v-if="panelRowList.length>0" :panelRowList="panelRowList"></PanelPart>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+
+    </div>
+    <aplayer ref='player' :music="currentSong" class="player" />
+    <dlg :dlgShow="dlgshow" :dlgSize="dlgsize" :picShow="picshow" @returnPlayList="loginReturnInfo"></dlg>
 
   </div>
-  <aplayer autoplay
-  :music="{
-    title: 'secret base~君がくれたもの~',
-    artist: 'Silent Siren',
-    src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-    pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
-  } " class="player"
- />
-  <dlg :dlgShow="dlgshow" :dlgSize="dlgsize" :picShow="picshow" @returnPlayList="loginReturnInfo"></dlg>
-   
-</div>
 
 </template>
 
 <script>
-
 import dlg from "@/components/Dlg";
 import Nav from "@/components/Nav";
 import PanelPart from "@/components/PanelPart";
 import FindMusic from "@/components/FindMusic";
 import Aplayer from "vue-aplayer";
-import {getPlayList} from "api/api.js"
+import { getPlayList } from "api/api.js";
+import { mapGetters } from "vuex";
 export default {
   components: {
     Aplayer,
@@ -40,19 +33,18 @@ export default {
     FindMusic,
     //Box
     dlg
-    
-    
   },
   mounted() {
     //挂载vue实例时，获取数据
     this.getPlayListInfo();
+   // this.$refs.player.play();
   },
   methods: {
     showLoginDlg: function() {
       this.dlgshow = true;
     },
     loginReturnInfo(info) {
-     this.changePlayListInfo(info.playlist);
+      this.changePlayListInfo(info.playlist);
       this.dlgshow = info.dlgshow;
       this.getRecommendList();
     },
@@ -68,48 +60,44 @@ export default {
 
         getPlayList(userId)
           .then(res => {
-          
             vm.changePlayListInfo(res.data.playlist);
             vm.$store.commit("storePlayListInfo", res.data.playlist);
           })
           .catch(error => console.log(error));
       }
     },
-    changePlayListInfo(info){
-      if(!(info instanceof Array)){
+    changePlayListInfo(info) {
+      if (!(info instanceof Array)) {
         return;
       }
-        info.forEach(function(item, index) {
-              index === 0
-                ? (item.icon = "fa fa-heart-o")
-                : (item.icon = "fa fa-music");
-            });
+      info.forEach(function(item, index) {
+        index === 0
+          ? (item.icon = "fa fa-heart-o")
+          : (item.icon = "fa fa-music");
+      });
 
-            var playList=
-              {
-                title: "我创建的歌单",
-                rows: info
-              }
-            
-            this.panelRowList.push(playList);
+      var playList = {
+        title: "我创建的歌单",
+        rows: info
+      };
 
+      this.panelRowList.push(playList);
     },
-    getRecommendList(){
-      var vm=this;
+    getRecommendList() {
+      var vm = this;
       this.$axios
-          .get("/recommend/resource",{
-            params:{
-              xhrFields:'{ withCredentials: true }'
-            }
-          })
-          .then(res=>{
-            console.log(res);
-          })
+        .get("/recommend/resource", {
+          params: {
+            xhrFields: "{ withCredentials: true }"
+          }
+        })
+        .then(res => {
+          console.log(res);
+        });
     }
   },
   data() {
     return {
-     
       dlgshow: false,
       //很奇怪我的default没有生效
       dlgsize: {
@@ -192,15 +180,32 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    ...mapGetters([
+      "currentSong",
+      "playState"
+      // ...
+    ])
+  },
+  watch: {
+    currentSong(val) {
+      if (val) {
+        //debugger
+        this.$nextTick(() => {
+          this.$refs.player.audio.play();
+        });
+      }
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .CloudMusic {
-    max-width: 968px;
-    margin: 0 auto;
-    min-width: 945px;
+  max-width: 968px;
+  margin: 0 auto;
+  min-width: 945px;
 }
 .mainPart {
   display: flex;

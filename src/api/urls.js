@@ -13,7 +13,12 @@ const songsheet = {
   sheetdetail: '/playlist/detail'
 }
 
+const song = {
+  getSongUrl: '/music/url'
+}
+
 module.exports = {
   recomend: recomend,
-  songsheet: songsheet
+  songsheet: songsheet,
+  song: song
 }

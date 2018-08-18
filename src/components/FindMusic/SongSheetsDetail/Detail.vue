@@ -2,7 +2,7 @@
   <transition name='slide'>
     <div class="songdetail">
       <top-area :info="info"></top-area>
-      <table-area></table-area>
+      <table-area :songsList="songList"></table-area>
     </div>
   </transition>
 </template>
@@ -18,16 +18,21 @@ export default {
     return{
       info:{
         creator:{}
-      }
+      },
+      songList:[]
     }
   },
   components: {
     TableArea,
     TopArea
   },
-  created() {
+  activated() {
     let id = this.$route.params.id;
     this.getDetail(id);
+  },
+  deactivated() {
+    this.info=null;
+    this.songList=[];
   },
   methods: {
     async getDetail(id) {
@@ -49,16 +54,13 @@ export default {
        }
      }
      this.info=info;
-    //  this.info.coverImgUrl=data.coverImgUrl;
-    //  this.info.name=data.name;
-    //  this.info.creator.avatarUrl=data.creator.avatarUrl;
-    //  this.info.creator.backgroundUrl=data.creator.backgroundUrl;
-    //  this.info.creator.nickname=data.creator.nickname;
-    //  this.info.createTime=data.createTime;
-    //  this.info.trackCount=data.trackCount;
-    //  this.info.playCount=description.playCount;
-    //  this.info.description=data.description;
-    //  this.info.tags=data.tags;
+     data.tracks.forEach(element => {
+       let d=(element.duration/1000).toFixed()*1;
+       element.singer=element.artists.map(t=>t.name).join('/')//歌手
+       element.albumName=element.album.name;
+       element.duration=Math.floor(d/60)+':'+(d%60<10?'0'+d%60:d%60); 
+     });
+    this.songList=data.tracks;
     }
   }
 };

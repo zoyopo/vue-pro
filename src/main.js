@@ -22,10 +22,11 @@ Vue.use(Button)
 // Vue.use(ClientTable)
  // lazyLoad
 // Vue.use(VueLazyload)
+const imgLoading = require('./assets/imgLoading.png')
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: 'dist/error.png',
-  loading: '../static/Img/FindMusic/loading.gif',
+  loading: imgLoading,
   attempt: 1
 })
 //

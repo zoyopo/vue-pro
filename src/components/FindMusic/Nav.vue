@@ -19,7 +19,7 @@ export default {
         return [
           {
             navTitle: "推荐",
-            navHref: ""
+            navHref: "/"
           },
           {
             navTitle: "排行榜",

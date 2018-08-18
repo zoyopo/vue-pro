@@ -38,7 +38,7 @@
         <div class="music-singer"><span>{{boardInfo.boardSinger}}</span><span class="music-option music-like"><i :class="boardInfo.likeIcon"></i></span></div>
       </div>
     </div> -->
-    <broadInfo></broadInfo>
+    <!-- <broadInfo></broadInfo> -->
   </div>
 
 </template>
@@ -46,11 +46,11 @@
 <script>
 import BScroll from "better-scroll";
 //let scroll = new BScroll('.panel-body')
-import broadInfo from "@/components/FindMusic/broadInfo";
+// import broadInfo from "@/components/FindMusic/broadInfo";
 export default {
-  components: {
-    broadInfo
-  },
+  // components: {
+  //   broadInfo
+  // },
   data() {
     return {
       //左侧下方board信息
@@ -200,9 +200,9 @@ export default {
 .panelpart {
   //width: 20%;
   border: 1px solid;
-  max-width: 250px;
+  width: 250px;
   // display: inline-block;
-  // height: 550px;
+   height: 561px;
   // overflow-y: scroll;
   border-top: none;
 }

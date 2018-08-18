@@ -14,6 +14,12 @@ const mutations = {
 
   [types.FETCH_LOADING] (state, isLoading) {
     state.isLoading = isLoading
+  },
+  [types.SET_CURRENT_SONG] (state, currentSong) {
+    state.currentSong = currentSong
+  },
+  [types.SET_PLAY_STATE] (state, playState) {
+    state.play = playState
   }
 }
 
